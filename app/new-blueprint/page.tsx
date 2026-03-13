@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import {
   AppShell,
@@ -13,18 +12,14 @@ import { useAuthCheck, getAuthHeaders } from "@/hooks/use-auth-check"
 
 export default function NewBlueprintPage() {
   const { isChecking } = useAuthCheck()
-
   const [decisionContext, setDecisionContext] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  // Restore from localStorage on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("hcb_decision_context")
-      if (saved) {
-        setDecisionContext(saved)
-      }
+      if (saved) setDecisionContext(saved)
     }
   }, [])
 
@@ -33,21 +28,19 @@ export default function NewBlueprintPage() {
   const handleContinue = async () => {
     setError("")
     setIsLoading(true)
-
-    // Get the current value directly from the textarea to avoid stale state
     const currentValue = decisionContext.trim()
-    
+
     try {
-      // Save to localStorage immediately and synchronously
       localStorage.setItem("hcb_decision_context", currentValue)
-      
-      // Verify it was saved
-      const savedValue = localStorage.getItem("hcb_decision_context")
-      if (!savedValue) {
-        throw new Error("Failed to save decision context")
+
+      // FIXED: if a session already exists, reuse it — don't create a new one
+      const existingSessionId = localStorage.getItem("hcb_session_id")
+      if (existingSessionId) {
+        window.location.href = "/options"
+        return
       }
 
-      // Create session
+      // No existing session — create one
       const response = await fetch(
         "https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/sessions/start",
         {
@@ -61,19 +54,16 @@ export default function NewBlueprintPage() {
       )
 
       const data = await response.json()
-
       if (!response.ok) {
         throw new Error(data.message || "Failed to start session")
       }
 
-      // Check if we got a new session
       if (data.session && data.session.id) {
         localStorage.setItem("hcb_session_id", String(data.session.id))
         window.location.href = "/options"
         return
       }
 
-      // If no new session but active_count > 0, fetch existing session
       if (data.active_count > 0) {
         const userId = localStorage.getItem("hcb_user_id")
         const token = localStorage.getItem("hcb_token")
@@ -86,10 +76,8 @@ export default function NewBlueprintPage() {
             },
           }
         )
-
         if (listResponse.ok) {
           const listData = await listResponse.json()
-          // Response shape is { sessions: [...] }
           const existingSession = listData.sessions?.[0]
           if (existingSession) {
             localStorage.setItem("hcb_session_id", String(existingSession.id))
@@ -130,7 +118,6 @@ export default function NewBlueprintPage() {
         totalSteps={6}
         onBack={() => (window.location.href = "/dashboard")}
       />
-
       <ClarityCard>
         <h1
           className="font-serif text-[24px] mb-2"
@@ -144,7 +131,6 @@ export default function NewBlueprintPage() {
         >
           Describe the situation in your own words. There are no wrong answers.
         </p>
-
         <AutoGrowTextarea
           value={decisionContext}
           onChange={setDecisionContext}
@@ -152,20 +138,17 @@ export default function NewBlueprintPage() {
           storageKey="hcb_decision_context"
           minHeight={120}
         />
-
         <p
           className="text-sm italic mt-4 mb-6"
           style={{ color: "var(--hcb-text-secondary)" }}
         >
           You don&apos;t need a perfect answer to continue.
         </p>
-
         {error && (
           <div className="mb-4">
             <InlineError message={error} />
           </div>
         )}
-
         <PrimaryButton
           fullWidth
           disabled={!isValid}

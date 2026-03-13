@@ -1,0 +1,135 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Harmony Clarity Blueprint Design Tokens */
+  --hcb-bg: #F7F4EF;
+  --hcb-card-bg: #FFFFFF;
+  --hcb-text-primary: #1F2933;
+  --hcb-text-secondary: #6B7280;
+  --hcb-border: #E6E1D9;
+  --hcb-border-card: #E8E3DA;
+  --hcb-action-primary: #7A1E2C;
+  --hcb-action-primary-hover: #8F2636;
+  --hcb-action-secondary: #2F4F3E;
+  --hcb-action-secondary-hover: #3E6B52;
+  --hcb-focus-ring: #C89AA3;
+  --hcb-error-bg: #FEE2E2;
+  --hcb-error-text: #991B1B;
+  --hcb-disabled-bg: #F3F4F6;
+
+  /* shadcn tokens mapped to HCB */
+  --background: #F7F4EF;
+  --foreground: #1F2933;
+  --card: #FFFFFF;
+  --card-foreground: #1F2933;
+  --popover: #FFFFFF;
+  --popover-foreground: #1F2933;
+  --primary: #7A1E2C;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2F4F3E;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F7F4EF;
+  --muted-foreground: #6B7280;
+  --accent: #F7F4EF;
+  --accent-foreground: #1F2933;
+  --destructive: #991B1B;
+  --destructive-foreground: #FFFFFF;
+  --border: #E6E1D9;
+  --input: #E6E1D9;
+  --ring: #C89AA3;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #F7F4EF;
+  --foreground: #1F2933;
+  --card: #FFFFFF;
+  --card-foreground: #1F2933;
+  --popover: #FFFFFF;
+  --popover-foreground: #1F2933;
+  --primary: #7A1E2C;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2F4F3E;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F7F4EF;
+  --muted-foreground: #6B7280;
+  --accent: #F7F4EF;
+  --accent-foreground: #1F2933;
+  --destructive: #991B1B;
+  --destructive-foreground: #FFFFFF;
+  --border: #E6E1D9;
+  --input: #E6E1D9;
+  --ring: #C89AA3;
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', sans-serif;
+  --font-serif: 'Libre Baskerville', 'Libre Baskerville Fallback', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: var(--hcb-bg);
+    color: var(--hcb-text-primary);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--hcb-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hcb-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hcb-text-secondary);
+}
+
+/* Print styles for PDF export */
+@media print {
+  body {
+    background-color: white !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

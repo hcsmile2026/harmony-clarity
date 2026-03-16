@@ -1,15 +1,28 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import {
-  AppShell,
-  ClarityCard,
-  ProgressHeader,
-  PrimaryButton,
-  SecondaryButton,
-  InlineError,
-} from "@/components/hcb"
+import { AppShell, ClarityCard, ProgressHeader, PrimaryButton, SecondaryButton, InlineError } from "@/components/hcb"
 import { useAuthCheck } from "@/hooks/use-auth-check"
+
+const DRAFT_KEY = "hcb_options_draft"
+const DRAFT_KEY2 = "hcb_options_draft_bak"
+
+function saveDraft(opts: string[]) {
+  const val = JSON.stringify(opts)
+  try { localStorage.setItem(DRAFT_KEY, val) } catch {}
+  try { sessionStorage.setItem(DRAFT_KEY2, val) } catch {}
+}
+
+function loadDraft(): string[] | null {
+  try {
+    const a = localStorage.getItem(DRAFT_KEY) || sessionStorage.getItem(DRAFT_KEY2)
+    if (a) {
+      const p = JSON.parse(a)
+      if (Array.isArray(p) && p.length >= 2) return p
+    }
+  } catch {}
+  return null
+}
 
 export default function OptionsPage() {
   const { isChecking } = useAuthCheck()
@@ -17,17 +30,9 @@ export default function OptionsPage() {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  // Restore draft after hydration - guaranteed to run client-side
   useEffect(() => {
-    try {
-      const draft = localStorage.getItem("hcb_options_draft")
-      if (draft) {
-        const parsed = JSON.parse(draft)
-        if (Array.isArray(parsed) && parsed.length >= 2) {
-          setOptions(parsed)
-        }
-      }
-    } catch {}
+    const draft = loadDraft()
+    if (draft) setOptions(draft)
   }, [])
 
   const filledOptions = options.filter((o) => o.trim().length > 0)
@@ -37,19 +42,19 @@ export default function OptionsPage() {
     const newOptions = [...options]
     newOptions[index] = value
     setOptions(newOptions)
-    localStorage.setItem("hcb_options_draft", JSON.stringify(newOptions))
+    saveDraft(newOptions)
   }
 
   const handleAddOption = () => {
     if (options.length < 4) {
       const newOptions = [...options, ""]
       setOptions(newOptions)
-      localStorage.setItem("hcb_options_draft", JSON.stringify(newOptions))
+      saveDraft(newOptions)
     }
   }
 
   const handleBack = () => {
-    localStorage.setItem("hcb_options_draft", JSON.stringify(options))
+    saveDraft(options)
     window.location.href = "/new-blueprint"
   }
 
@@ -64,26 +69,15 @@ export default function OptionsPage() {
       return
     }
     const token = localStorage.getItem("hcb_token")
-    const headers: HeadersInit = {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    }
+    const headers: HeadersInit = { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
     try {
       localStorage.removeItem("hcb_options")
       const savedOptions: { id: number; name: string }[] = []
       for (const optionName of filledOptions) {
-        const response = await fetch(
-          "https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/options/add",
-          {
-            method: "POST",
-            headers,
-            body: JSON.stringify({
-              user_id: Number(userId),
-              session_id: Number(sessionId),
-              option_name: optionName,
-            }),
-          }
-        )
+        const response = await fetch("https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/options/add", {
+          method: "POST", headers,
+          body: JSON.stringify({ user_id: Number(userId), session_id: Number(sessionId), option_name: optionName }),
+        })
         const data = await response.json()
         if (!response.ok) throw new Error(data.message || "Failed to add option")
         const optionId = data.option?.id || data.id || savedOptions.length + 1
@@ -91,22 +85,16 @@ export default function OptionsPage() {
         localStorage.setItem("hcb_options", JSON.stringify(savedOptions))
       }
       localStorage.setItem("hcb_options", JSON.stringify(savedOptions))
-      const lockResponse = await fetch(
-        "https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/options/lock",
-        {
-          method: "POST",
-          headers,
-          body: JSON.stringify({
-            user_id: Number(userId),
-            session_id: Number(sessionId),
-          }),
-        }
-      )
+      const lockResponse = await fetch("https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/options/lock", {
+        method: "POST", headers,
+        body: JSON.stringify({ user_id: Number(userId), session_id: Number(sessionId) }),
+      })
       if (!lockResponse.ok) {
         const data = await lockResponse.json()
         throw new Error(data.message || "Failed to lock options")
       }
-      localStorage.removeItem("hcb_options_draft")
+      try { localStorage.removeItem(DRAFT_KEY) } catch {}
+      try { sessionStorage.removeItem(DRAFT_KEY2) } catch {}
       window.location.href = "/pressure-test"
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong")
@@ -138,16 +126,12 @@ export default function OptionsPage() {
                   <label className="text-sm font-medium" style={{ color: "var(--hcb-text-primary)" }}>
                     Option {index + 1}
                   </label>
-                  <input
-                    type="text"
-                    value={option}
+                  <input type="text" value={option}
                     onChange={(e) => handleOptionChange(index, e.target.value)}
                     placeholder={`Enter option ${index + 1}`}
-                    style={{
-                      padding: "14px 16px", fontSize: "16px", borderRadius: "10px",
+                    style={{ padding: "14px 16px", fontSize: "16px", borderRadius: "10px",
                       border: "1px solid var(--hcb-border)", backgroundColor: "var(--hcb-card-bg)",
-                      color: "var(--hcb-text-primary)", outline: "none",
-                    }}
+                      color: "var(--hcb-text-primary)", outline: "none" }}
                     onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 2px var(--hcb-focus-ring)"; e.currentTarget.style.borderColor = "var(--hcb-focus-ring)" }}
                     onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "var(--hcb-border)" }}
                   />
@@ -155,9 +139,7 @@ export default function OptionsPage() {
               ))}
             </div>
             {options.length < 4 && (
-              <SecondaryButton onClick={handleAddOption} className="mb-4">
-                + Add Another Option
-              </SecondaryButton>
+              <SecondaryButton onClick={handleAddOption} className="mb-4">+ Add Another Option</SecondaryButton>
             )}
             <p className="text-sm italic mb-6" style={{ color: "var(--hcb-text-secondary)" }}>
               These options will guide your Blueprint reflection.

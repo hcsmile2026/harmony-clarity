@@ -65,8 +65,7 @@ export default function OptionsPage() {
         body: JSON.stringify({ user_id: Number(userId), session_id: Number(sessionId) })
       })
       if (!lockRes.ok) { const d = await lockRes.json(); throw new Error(d.message || "Failed to lock") }
-      localStorage.removeItem("hcb_options_draft")
-      sessionStorage.removeItem("hcb_options_draft")
+      // keep draft so user can return to options page
       window.location.href = "/pressure-test"
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong")

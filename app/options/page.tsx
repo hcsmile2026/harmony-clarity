@@ -55,7 +55,9 @@ export default function OptionsPage() {
 
   const handleBack = () => {
     saveDraft(options)
-    window.history.back()
+    localStorage.removeItem("hcb_session_id")
+    localStorage.removeItem("hcb_options")
+    window.location.href = "/new-blueprint"
   }
 
   const handleSubmit = async () => {

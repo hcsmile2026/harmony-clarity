@@ -55,7 +55,7 @@ export default function OptionsPage() {
 
   const handleBack = () => {
     saveDraft(options)
-    window.location.href = "/new-blueprint"
+    window.history.back()
   }
 
   const handleSubmit = async () => {

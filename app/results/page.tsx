@@ -148,7 +148,7 @@ export default function ResultsPage() {
   if (isGenerating) {
     return (
       <AppShell>
-        <ProgressHeader step={6} totalSteps={6} />
+        <ProgressHeader step={6} totalSteps={5} />
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
           <div
             className="animate-spin h-12 w-12 border-3 rounded-full mb-6"
@@ -180,7 +180,7 @@ export default function ResultsPage() {
     if (error === "insufficient_credits") {
       return (
         <AppShell>
-          <ProgressHeader step={6} totalSteps={6} />
+          <ProgressHeader step={6} totalSteps={5} />
           <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
             <p
               className="text-lg font-medium mb-2"
@@ -204,7 +204,7 @@ export default function ResultsPage() {
 
     return (
       <AppShell>
-        <ProgressHeader step={6} totalSteps={6} />
+        <ProgressHeader step={6} totalSteps={5} />
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
           <InlineError message="Something went wrong. Please try again." />
           <div className="mt-6">
@@ -217,7 +217,7 @@ export default function ResultsPage() {
 
   return (
     <AppShell>
-      <ProgressHeader step={6} totalSteps={6} />
+      <ProgressHeader step={6} totalSteps={5} />
 
       <h1
         className="font-serif text-[32px] text-center mb-2"

@@ -231,7 +231,7 @@ export default function PressureTestPage() {
     <AppShell>
       <ProgressHeader
         step={3}
-        totalSteps={6}
+        totalSteps={5}
         onBack={() => (window.location.href = "/options")}
       />
 

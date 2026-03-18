@@ -6,7 +6,7 @@ import {
   AppShell,
   ProgressHeader,
   PrimaryButton,
-  SecondaryButton,
+  SecondaryButton,h
   InlineError,
 } from "@/components/hcb"
 import { useAuthCheck } from "@/hooks/use-auth-check"
@@ -283,7 +283,7 @@ export default function ResultsPage() {
                   {children}
                 </strong>
               ),
-              hr: () => (
+              br: () => <br />,              hr: () => (
                 <hr className="my-6 border-t" style={{ borderColor: "var(--hcb-border)" }} />
               ),
             }}

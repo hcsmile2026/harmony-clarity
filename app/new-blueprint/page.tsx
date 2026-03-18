@@ -70,7 +70,7 @@ export default function NewBlueprintPage() {
 
   return (
     <AppShell>
-      <ProgressHeader step={1} totalSteps={5} onBack={() => window.location.href = "/dashboard"} />
+      <ProgressHeader step={1} totalSteps={4} onBack={() => window.location.href = "/dashboard"} />
       <ClarityCard>
         <h1 className="font-serif text-[24px] mb-2" style={{ color: "var(--hcb-text-primary)" }}>What decision are you seeking clarity about?</h1>
         <p className="text-base mb-6" style={{ color: "var(--hcb-text-secondary)" }}>Describe the situation in your own words. There are no wrong answers.</p>

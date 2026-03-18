@@ -80,7 +80,7 @@ export default function OptionsPage() {
         </div>
       ) : (
         <>
-          <ProgressHeader step={2} totalSteps={5} onBack={handleBack} />
+          <ProgressHeader step={2} totalSteps={4} onBack={handleBack} />
           <ClarityCard>
             <h1 className="font-serif text-[24px] mb-2" style={{ color: "var(--hcb-text-primary)" }}>What are you choosing between?</h1>
             <p className="text-base mb-6" style={{ color: "var(--hcb-text-secondary)" }}>Add 2 to 4 options. Be as specific or as open as feels right.</p>

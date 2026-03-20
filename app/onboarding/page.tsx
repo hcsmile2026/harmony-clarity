@@ -104,6 +104,8 @@ export default function OnboardingPage() {
             birth_time_known: !birthTimeUnknown && !!birthTime,
             birth_timezone: "UTC",
             birth_location_label: `${birthCity}, ${birthCountry}`,
+              birth_city: birthCity,
+              birth_country: birthCountry,
             birth_coordinates: "0,0",
             birth_location_precision: "city",
             consent_birth_data: consentData,

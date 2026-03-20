@@ -10,6 +10,14 @@ import {
 } from "@/components/hcb"
 import { useAuthCheck, getAuthHeaders } from "@/hooks/use-auth-check"
 
+interface UserProfile {
+  first_name: string
+  birth_date: string
+  birth_time_local: string
+  birth_city: string
+  birth_country: string
+}
+
 interface Session {
   id: number
   decision_context: string
@@ -24,6 +32,7 @@ export default function DashboardPage() {
   const [credits, setCredits] = useState<number | null>(null)
   const [sessions, setSessions] = useState<Session[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [profile, setProfile] = useState<UserProfile | null>(null)
 
   // Read first name from localStorage on mount
   useEffect(() => {
@@ -49,7 +58,7 @@ export default function DashboardPage() {
       }
 
       try {
-        const [creditsRes, sessionsRes] = await Promise.all([
+        const [creditsRes, sessionsRes, profileRes] = await Promise.all([
           fetch(`https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/credits/balance?user_id=${userId}`, {
             headers,
           }),
@@ -174,6 +183,27 @@ export default function DashboardPage() {
         >
           Start New Blueprint
         </PrimaryButton>
+      </div>
+
+      {/* My Profile */}
+      <div className="mb-8">
+        <h2 className="font-serif text-xl mb-4" style={{ color: "var(--hcb-text-primary)" }}>My Profile</h2>
+        <ClarityCard>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-2 flex-1">
+              {profile?.birth_date && (
+                <div className="flex gap-2 text-sm"><span className="font-medium" style={{ color: "var(--hcb-text-primary)", minWidth: "120px" }}>Date of Birth:</span><span style={{ color: "var(--hcb-text-secondary)" }}>{profile.birth_date}</span></div>
+              )}
+              {profile?.birth_time_local && (
+                <div className="flex gap-2 text-sm"><span className="font-medium" style={{ color: "var(--hcb-text-primary)", minWidth: "120px" }}>Time of Birth:</span><span style={{ color: "var(--hcb-text-secondary)" }}>{profile.birth_time_local}</span></div>
+              )}
+              {(profile?.birth_city || profile?.birth_country) && (
+                <div className="flex gap-2 text-sm"><span className="font-medium" style={{ color: "var(--hcb-text-primary)", minWidth: "120px" }}>Location:</span><span style={{ color: "var(--hcb-text-secondary)" }}>{[profile?.birth_city, profile?.birth_country].filter(Boolean).join(", ")}</span></div>
+              )}
+            </div>
+            <button onClick={() => (window.location.href = "/profile")} className="text-sm cursor-pointer shrink-0" style={{ color: "var(--hcb-action-primary)", fontWeight: 500 }}>Edit →</button>
+          </div>
+        </ClarityCard>
       </div>
 
       {/* Past Sessions */}

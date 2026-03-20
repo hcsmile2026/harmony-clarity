@@ -44,6 +44,7 @@ export default function ProfilePage() {
       const res = await fetch("https://xkyb-0esl-ybtr.n7e.xano.io/api:Px_PC3vf/profile/update", {
         method: "POST", headers: getAuthHeaders(),
         body: JSON.stringify({
+          user_id: Number(localStorage.getItem("hcb_user_id")),
           first_name: firstName, birth_date: birthDate,
           birth_time_local: birthTimeUnknown ? null : birthTime || null,
           birth_time_known: !birthTimeUnknown && !!birthTime,

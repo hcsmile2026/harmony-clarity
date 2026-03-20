@@ -46,7 +46,7 @@ export default function OnboardingPage() {
         if (response.ok) {
           const data = await response.json()
           // If access_start_date is not null, profile is complete
-          if (data.access_start_date !== null && data.access_start_date !== undefined) {
+          if (data.profile_complete === true) {
             localStorage.setItem("hcb_onboarding_done", "true")
             setShouldRedirect(true)
             window.location.href = "/dashboard"

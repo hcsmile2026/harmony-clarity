@@ -65,6 +65,7 @@ export default function DashboardPage() {
           fetch(`https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/sessions/list?user_id=${userId}`, {
             headers,
           }),
+          fetch(`https://xkyb-0esl-ybtr.n7e.xano.io/api:Px_PC3vf/auth/me?user_id=${userId}`, { headers }),
         ])
 
         if (creditsRes.ok) {
@@ -77,6 +78,11 @@ export default function DashboardPage() {
           // Handle response shape: { sessions: [...] } or direct array
           const sessionsList = sessionsData.sessions || sessionsData
           setSessions(Array.isArray(sessionsList) ? sessionsList : [])
+        }
+        if (profileRes && profileRes.ok) {
+          const pd = await profileRes.json()
+          setProfile(pd)
+          if (pd.first_name) { setFirstName(pd.first_name); localStorage.setItem("hcb_first_name", pd.first_name) }
         }
       } catch (error) {
         console.error("Failed to fetch dashboard data:", error)

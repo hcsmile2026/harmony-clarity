@@ -185,7 +185,7 @@ export default function DashboardPage() {
       <div className="mb-8">
         <PrimaryButton
           fullWidth
-          onClick={() => (window.location.href = "/new-blueprint")}
+          onClick={() => { ["hcb_session_id","hcb_options","hcb_decision_context","hcb_pressure_q1","hcb_pressure_q2","hcb_pressure_q3","hcb_options_draft"].forEach(k => localStorage.removeItem(k)); window.location.href = "/new-blueprint"; }}
         >
           Start New Blueprint
         </PrimaryButton>

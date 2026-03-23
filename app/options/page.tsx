@@ -83,7 +83,7 @@ export default function OptionsPage() {
           <ProgressHeader step={2} totalSteps={4} onBack={handleBack} />
           <ClarityCard>
             <h1 className="font-serif text-[24px] mb-2" style={{ color: "var(--hcb-text-primary)" }}>What are you choosing between?</h1>
-            <p className="text-base mb-6" style={{ color: "var(--hcb-text-secondary)" }}>Add 2 to 4 options. Be as specific or as open as feels right.</p>
+            <p className="text-base mb-6" style={{ color: "var(--hcb-text-secondary)" }}>Add your two options. Be as specific or as open as feels right.</p>
             <div className="flex flex-col gap-4 mb-4">
               {options.map((option, index) => (
                 <div key={index} className="flex flex-col gap-2">
@@ -97,7 +97,7 @@ export default function OptionsPage() {
                 </div>
               ))}
             </div>
-            {options.length < 4 && <SecondaryButton onClick={handleAddOption} className="mb-4">+ Add Another Option</SecondaryButton>}
+            
             <p className="text-sm italic mb-6" style={{ color: "var(--hcb-text-secondary)" }}>These options will guide your Blueprint reflection.</p>
             {error && <div className="mb-4"><InlineError message={error} /></div>}
             <PrimaryButton fullWidth disabled={!isValid} isLoading={isLoading} onClick={handleSubmit}>Lock In My Options &rarr;</PrimaryButton>

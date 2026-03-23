@@ -21,7 +21,7 @@ export default function ProfilePage() {
       const token = localStorage.getItem("hcb_token")
       if (!token) { setIsLoading(false); return }
       try {
-        const res = await fetch(`https://xkyb-0esl-ybtr.n7e.xano.io/api:Px_PC3vf/auth/me?t=${Date.now()}`, {
+        const res = await fetch(`https://xkyb-0esl-ybtr.n7e.xano.io/api:Px_PC3vf/auth/me?t=${Date.now()}&user_id=${localStorage.getItem("hcb_user_id")}`, {
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         })
         if (res.ok) {

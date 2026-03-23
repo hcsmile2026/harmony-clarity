@@ -14,7 +14,7 @@ export default function OptionsPage() {
       const draft = localStorage.getItem("hcb_options_draft")
       if (draft) {
         const parsed = JSON.parse(draft)
-        if (Array.isArray(parsed) && parsed.length >= 2) setOptions(parsed)
+        if (Array.isArray(parsed) && parsed.length >= 2) setOptions(parsed.slice(0, 2))
       }
     } catch {}
   }, [])

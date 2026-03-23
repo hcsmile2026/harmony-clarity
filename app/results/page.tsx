@@ -37,27 +37,7 @@ export default function ResultsPage() {
         "Authorization": `Bearer ${token}`,
       }
 
-      // First, check if a reflection already exists for this session
-      try {
-        const checkResponse = await fetch(
-          `https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/sessions/get?session_id=${sessionId}&user_id=${userId}`,
-          { headers }
-        )
-
-        if (checkResponse.ok) {
-          const sessionData = await checkResponse.json()
-          // Check if reflection already exists in the session data
-          const existingReflection = sessionData.reflection || sessionData.reflection_output || sessionData.session?.reflection
-          if (existingReflection) {
-            setReflection(existingReflection)
-            setIsGenerating(false)
-            return
-          }
-        }
-      } catch {
-        // If check fails, continue to create new reflection
-      }
-
+      
       let options: { id: number; name: string }[] = []
       try {
         options = JSON.parse(optionsStr || "[]")

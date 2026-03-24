@@ -255,6 +255,7 @@ export default function DashboardPage() {
                       })}
                     </p>
                   </div>
+                  {(session.session_status || session.status) === "closed" && <span className="text-xs font-medium mr-1" style={{ color: "var(--hcb-action-primary)" }}>View &rarr;</span>}
                   <span
                     className="text-xs px-2 py-1 rounded"
                     style={{

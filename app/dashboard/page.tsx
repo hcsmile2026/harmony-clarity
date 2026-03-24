@@ -268,7 +268,7 @@ export default function DashboardPage() {
                           : "var(--hcb-text-secondary)",
                     }}
                   >
-                    {session.status || "Draft"}
+                    {(session.session_status || session.status) === "closed" ? "Completed" : "Draft"}
                   </span>
                 </div>
               </ClarityCard>

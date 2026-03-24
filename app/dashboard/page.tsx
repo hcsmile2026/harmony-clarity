@@ -79,7 +79,7 @@ export default function DashboardPage() {
           const sessionsData = await sessionsRes.json()
           // Handle response shape: { sessions: [...] } or direct array
           const sessionsList = sessionsData.sessions || sessionsData
-          setSessions(Array.isArray(sessionsList) ? sessionsList : [])
+          setSessions(Array.isArray(sessionsList) ? [...sessionsList].sort((a,b)=>b.created_at-a.created_at) : [])
         }
         if (profileRes && profileRes.ok) {
           const pd = await profileRes.json()

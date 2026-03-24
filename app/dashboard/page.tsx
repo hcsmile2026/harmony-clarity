@@ -235,7 +235,7 @@ export default function DashboardPage() {
         ) : (
           <div className="flex flex-col gap-3">
             {sessions.map((session) => (
-              <ClarityCard key={session.id}>
+              <ClarityCard key={session.id} onClick={()=>(window.location.href=`/view-blueprint?session=${session.id}`)} style={{cursor:"pointer"}}>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <p
@@ -268,7 +268,7 @@ export default function DashboardPage() {
                           : "var(--hcb-text-secondary)",
                     }}
                   >
-                    {session.status || "Draft"}
+                    (session.session_status||session.status)==="closed"?"Completed":"Draft"
                   </span>
                 </div>
               </ClarityCard>

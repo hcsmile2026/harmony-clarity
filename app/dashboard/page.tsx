@@ -162,26 +162,6 @@ export default function DashboardPage() {
         <CreditsCard credits={credits ?? 0} />
       </div>
 
-      {/* Low Credits Warning */}
-      {credits === 0 && (
-        <div
-          className="rounded-lg p-4 mb-6 flex items-center justify-between flex-wrap gap-4"
-          style={{
-            backgroundColor: "#FEF3C7",
-            border: "1px solid #F59E0B",
-          }}
-        >
-          <span
-            className="text-sm font-medium"
-            style={{ color: "#92400E" }}
-          >
-            You have no credits remaining.
-          </span>
-          <SecondaryButton onClick={() => (window.location.href = "/buy-credits")}>
-            Get More Credits
-          </SecondaryButton>
-        </div>
-      )}
 
       {/* Start New Blueprint */}
       <div className="mb-8">

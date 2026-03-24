@@ -44,7 +44,18 @@ export default function ViewBlueprintPage() {
         </div>
         <h1 className="font-serif text-[28px] text-center mb-2" style={{ color: "var(--hcb-text-primary)" }}>Your Blueprint</h1>
         <p className="text-base text-center mb-8" style={{ color: "var(--hcb-text-secondary)" }}>Your past clarity blueprint</p>
-        {reflection && (<div className="rounded-[14px] p-6 prose prose-slate max-w-none" style={{ backgroundColor: "var(--hcb-card-bg)", border: "1px solid var(--hcb-border-card)", color: "var(--hcb-text-primary)" }}><ReactMarkdown>{reflection}</ReactMarkdown></div>)}
+        {reflection && (
+          <div className="rounded-[14px] p-6" style={{ backgroundColor: "var(--hcb-card-bg)", border: "1px solid var(--hcb-border-card)", color: "var(--hcb-text-primary)" }}>
+            <ReactMarkdown components={{
+              h1: ({ children }) => <h1 className="font-serif text-2xl font-semibold mt-6 mb-3 first:mt-0 pb-2" style={{ color: "var(--hcb-text-primary)", borderBottom: "1px solid var(--hcb-border)" }}>{children}</h1>,
+              h2: ({ children }) => <h2 className="font-serif text-xl font-semibold mt-8 mb-3" style={{ color: "var(--hcb-text-primary)" }}>{children}</h2>,
+              p: ({ children }) => <p className="mb-4 leading-relaxed" style={{ color: "var(--hcb-text-primary)" }}>{children}</p>,
+              strong: ({ children }) => <strong className="font-semibold" style={{ color: "var(--hcb-text-primary)" }}>{children}</strong>,
+              hr: () => <hr className="my-6" style={{ borderColor: "var(--hcb-border)" }} />,
+              li: ({ children }) => <li className="mb-2 ml-4" style={{ color: "var(--hcb-text-primary)", listStyleType: "disc" }}>{children}</li>,
+            }}>{reflection}</ReactMarkdown>
+          </div>
+        )}
         <div className="flex flex-col gap-3 mt-8 no-print">
           <PrimaryButton fullWidth onClick={() => window.print()}>Save to PDF</PrimaryButton>
           <SecondaryButton fullWidth onClick={() => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([reflection], { type: "text/plain" })); a.download = "blueprint.txt"; a.click() }}>Download as Text</SecondaryButton>

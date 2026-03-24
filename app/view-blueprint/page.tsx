@@ -20,13 +20,13 @@ export default function ViewBlueprintPage() {
   useEffect(() => {
     if (isChecking || sessionId === "") return
     const run = async () => {
-      const token = localStorage.getItem("hcb_token")
+      const token = localStorage.getItem("hcb_token") ?? ""
       try {
         const res = await fetch("https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/reflections/list?session_id=" + sessionId, { headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token } })
         const data = await res.json()
         const r = (data.reflections || []).find((x: any) => x.reflection_type === "ai_generated")
         if (r && r.reflection_text) { setReflection(r.reflection_text) } else { setError("No blueprint found for this session.") }
-      } catch { setError("Something went wrong.") }
+      } catch (_e) { setError("Something went wrong.") }
       finally { setIsLoading(false) }
     }
     run()

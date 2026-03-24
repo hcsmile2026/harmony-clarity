@@ -235,7 +235,7 @@ export default function DashboardPage() {
         ) : (
           <div className="flex flex-col gap-3">
             {sessions.map((session) => (
-              <ClarityCard key={session.id}>
+              <div key={session.id} onClick={function(){window.location.href="/view-blueprint?session="+session.id}} style={{cursor:"pointer"}}><ClarityCard>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <p

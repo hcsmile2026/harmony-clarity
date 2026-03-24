@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import {
+import f
   AppShell,
   ClarityCard,
   ProgressHeader,
@@ -82,7 +82,16 @@ export default function PressureTestPage() {
   const [q3, setQ3] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-
+const [credits, setCredits] = useState<number | null>(null)
+  useEffect(() => {
+    const token = localStorage.getItem("hcb_token")
+    const userId = localStorage.getItem("hcb_user_id")
+    if (token && userId) {
+      fetch(`https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/credits/balance?user_id=${userId}`, {
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+      }).then(r => r.json()).then(d => setCredits(d.credits_remaining ?? 0)).catch(() => {})
+    }
+  }, [])
   // Restore from localStorage on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -304,7 +313,18 @@ export default function PressureTestPage() {
       >
         You don&apos;t need to overthink these. Go with your first instinct.
       </p>
+      {credits === 0 && (
+        <div className="rounded-lg p-4 mb-4 text-sm text-center" style={{ backgroundColor: "#FEF3C7", border: "1px solid #F59E0B", color: "#92400E" }}>
+          You have no credits remaining.{" "}
+          <button onClick={() => window.location.href = "/buy-credits"} className="underline font-medium cursor-pointer" style={{ color: "#92400E" }}>Buy credits →</button>
+        </div>
+      )}
 
+      {credits === 0 && (
+        <div className="rounded-lg p-4 mb-4 text-sm text-center" style={{ backgroundColor: "#FEF3C7", border: "1px solid #F59E0B", color: "#92400E" }}>
+          You have no credits remaining. <button onClick={() => window.location.href = "/buy-credits"} className="underline font-medium cursor-pointer" style={{ color: "#92400E" }}>Buy credits →</button>
+        </div>
+      )}
       {error && (
         <div className="mb-4">
           <InlineError message={error} />

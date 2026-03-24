@@ -185,8 +185,17 @@ export default function DashboardPage() {
 
       {/* Start New Blueprint */}
       <div className="mb-8">
-        <PrimaryButton fullWidth onClick={() => { ["hcb_session_id","hcb_options","hcb_decision_context","hcb_pressure_q1","hcb_pressure_q2","hcb_pressure_q3","hcb_options_draft"].forEach(k => localStorage.removeItem(k)); window.location.href = "/new-blueprint"; }}>Start New Blueprint</PrimaryButton>
+        <PrimaryButton
+          fullWidth
+          onClick={() => { ["hcb_session_id","hcb_options","hcb_decision_context","hcb_pressure_q1","hcb_pressure_q2","hcb_pressure_q3","hcb_options_draft"].forEach(k => localStorage.removeItem(k)); window.location.href = "/new-blueprint"; }}
+        >
+          Start New Blueprint
+        </PrimaryButton>
       </div>
+
+      {/* My Profile */}
+      <div className="mb-8">
+        <h2 className="font-serif text-xl mb-4" style={{ color: "var(--hcb-text-primary)" }}>My Profile</h2>
         <ClarityCard>
           <div className="flex items-start justify-between gap-4">
             <div className="flex flex-col gap-2 flex-1">
@@ -247,7 +256,6 @@ export default function DashboardPage() {
                     </p>
                   </div>
                   <span
-                  {(session.session_status || session.status) === "closed" && <span className="text-xs font-medium mr-2" style={{ color: "var(--hcb-action-primary)" }}>View u2192</span>}
                     className="text-xs px-2 py-1 rounded"
                     style={{
                       backgroundColor:

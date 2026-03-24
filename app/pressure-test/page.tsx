@@ -184,15 +184,21 @@ export default function DashboardPage() {
       )}
 
       {/* Start New Blueprint */}
-      <div className="mb-8">
-        <PrimaryButton
-          fullWidth
-          onClick={() => { ["hcb_session_id","hcb_options","hcb_decision_context","hcb_pressure_q1","hcb_pressure_q2","hcb_pressure_q3","hcb_options_draft"].forEach(k => localStorage.removeItem(k)); window.location.href = "/new-blueprint"; }}
-        >
-          Start New Blueprint
-        </PrimaryButton>
+     <div className="mb-8">
+        {(credits === null || credits > 0) ? (
+          <PrimaryButton
+            fullWidth
+            onClick={() => { ["hcb_session_id","hcb_options","hcb_decision_context","hcb_pressure_q1","hcb_pressure_q2","hcb_pressure_q3","hcb_options_draft"].forEach(k => localStorage.removeItem(k)); window.location.href = "/new-blueprint"; }}
+          >
+            Start New Blueprint
+          </PrimaryButton>
+        ) : (
+          <div className="rounded-xl p-4 text-center" style={{ backgroundColor: "#FEF3C7", border: "1px solid #F59E0B" }}>
+            <p className="text-sm font-medium mb-3" style={{ color: "#92400E" }}>You need credits to start a new Blueprint.</p>
+            <PrimaryButton onClick={() => (window.location.href = "/buy-credits")}>Get Credits →</PrimaryButton>
+          </div>
+        )}
       </div>
-
       {/* My Profile */}
       <div className="mb-8">
         <h2 className="font-serif text-xl mb-4" style={{ color: "var(--hcb-text-primary)" }}>My Profile</h2>
@@ -255,6 +261,7 @@ export default function DashboardPage() {
                       })}
                     </p>
                   </div>
+                 {(session.session_status || session.status) === "closed" && <span className="text-xs font-medium mr-1" style={{ color: "var(--hcb-action-primary)" }}>View →</span>}
                   <span
                     className="text-xs px-2 py-1 rounded"
                     style={{

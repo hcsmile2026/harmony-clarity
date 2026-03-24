@@ -169,8 +169,8 @@ export default function DashboardPage() {
           <PrimaryButton fullWidth onClick={() => { ["hcb_session_id","hcb_options","hcb_decision_context","hcb_pressure_q1","hcb_pressure_q2","hcb_pressure_q3","hcb_options_draft"].forEach(k => localStorage.removeItem(k)); window.location.href = "/new-blueprint"; }}>Start New Blueprint</PrimaryButton>
         ) : (
           <div className="rounded-xl p-4 text-center" style={{ backgroundColor: "#FEF3C7", border: "1px solid #F59E0B" }}>
-            <p className="text-sm font-medium mb-3" style={{ color: "#92400E" }}>You need credits to start a new Blueprint.</p>
-            <PrimaryButton onClick={() => (window.location.href = "/buy-credits")}>Get Credits</PrimaryButton>
+            <p className="text-sm font-medium mb-3" style={{ color: "#92400E" }}>Each Blueprint begins with one credit. Add credits to continue.</p>
+            <PrimaryButton onClick={() => (window.location.href = "/buy-credits")}>Add Credits →</PrimaryButton>
           </div>
         )}
       </div>

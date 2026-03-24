@@ -271,7 +271,7 @@ export default function DashboardPage() {
                     {(session.session_status || session.status) === "closed" ? "Completed" : "Draft"}
                   </span>
                 </div>
-              </ClarityCard>
+              </ClarityCard></div>
             ))}
           </div>
         )}

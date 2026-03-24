@@ -1,15 +1,15 @@
 "use client"
 
 import { useState, useEffect, Suspense } from "react"
-import { useSearchParams } from "next/navigation"
+
 import ReactMarkdown from "react-markdown"
 import { AppShell, PrimaryButton, SecondaryButton, InlineError } from "@/components/hcb"
 import { useAuthCheck } from "@/hooks/use-auth-check"
 
 function ViewBlueprintContent() {
   const { isChecking } = useAuthCheck()
-  const searchParams = useSearchParams()
-  const sessionId = searchParams.get("session")
+  
+  const [sessionId, setSessionId] = useState<string | null>(undefined as any)
   const [reflection, setReflection] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")

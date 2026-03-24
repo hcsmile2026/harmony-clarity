@@ -267,9 +267,7 @@ export default function DashboardPage() {
                           ? "#065F46"
                           : "var(--hcb-text-secondary)",
                     }}
-                  >
-                    (session.session_status||session.status)==="closed"?"Completed":"Draft"
-                  </span>
+                  >n                    {(session.session_status||session.status)==="closed"?"Completed":"Draft"}n                  </span>
                 </div>
               </ClarityCard>
             ))}

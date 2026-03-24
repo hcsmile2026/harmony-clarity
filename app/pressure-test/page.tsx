@@ -235,7 +235,7 @@ export default function DashboardPage() {
         ) : (
           <div className="flex flex-col gap-3">
             {sessions.map((session) => (
-              <div key={session.id} onClick={()=>{window.location.href="/view-blueprint?session="+String(session.id)}} style={{cursor:"pointer"}}><ClarityCard>
+              <div key={session.id} onClick={()=>{window.location.href="/view-blueprint?session="+session.id}} style={{cursor:"pointer"}}><ClarityCard>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <p
@@ -271,7 +271,7 @@ export default function DashboardPage() {
                     {(session.session_status||session.status)==="closed"?"Completed":"Draft"}
                   </span>
                 </div>
-              </ClarityCard></div>
+              </ClarityCard>
             ))}
           </div>
         )}

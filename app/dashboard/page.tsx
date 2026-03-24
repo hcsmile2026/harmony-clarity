@@ -200,7 +200,7 @@ export default function DashboardPage() {
           <div className="flex items-start justify-between gap-4">
             <div className="flex flex-col gap-2 flex-1">
               {profile?.birth_date && (
-                <div className="flex gap-2 text-sm"><span className="font-medium" style={{ color: "var(--hcb-text-primary)", minWidth: "120px" }}>Date of Birth:</span><span style={{ color: "var(--hcb-text-secondary)" }}>{(() => { const [y,m,d]=profile.birth_date.split("-"); const mn=["January","February","March","April","May","June","July","August","September","October","November","December"]; return `${parseInt(d)} ${mn[parseInt(m)-1]}, ${y}`; })()}}</span></div>
+                <div className="flex gap-2 text-sm"><span className="font-medium" style={{ color: "var(--hcb-text-primary)", minWidth: "120px" }}>Date of Birth:</span><span style={{ color: "var(--hcb-text-secondary)" }}>{(() => { const [y,m,d]=profile.birth_date.split("-"); const mn=["January","February","March","April","May","June","July","August","September","October","November","December"]; return `${parseInt(d)} ${mn[parseInt(m)-1]}, ${y}`; })()}</span></div>
               )}
               {profile?.birth_time_local && (
                 <div className="flex gap-2 text-sm"><span className="font-medium" style={{ color: "var(--hcb-text-primary)", minWidth: "120px" }}>Time of Birth:</span><span style={{ color: "var(--hcb-text-secondary)" }}>{profile.birth_time_local}</span></div>

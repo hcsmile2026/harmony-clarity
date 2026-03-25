@@ -22,7 +22,6 @@ export default function NewBlueprintPage() {
     const currentValue = decisionContext.trim()
     try {
       localStorage.setItem("hcb_decision_context", currentValue)
-      }
       const response = await fetch("https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/sessions/start", {
         method: "POST", headers: getAuthHeaders(),
         body: JSON.stringify({ user_id: Number(localStorage.getItem("hcb_user_id")), decision_topic: currentValue }),

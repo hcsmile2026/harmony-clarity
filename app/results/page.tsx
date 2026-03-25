@@ -76,7 +76,6 @@ export default function ResultsPage() {
         }
 
         setReflection(data.reflection || ""); localStorage.setItem("hcb_reflection", data.reflection || "")
-        localStorage.setItem("hcb_reflection", data.reflection || "")
       } catch (err) {
         setIsGenerating(false)
       }
@@ -99,7 +98,6 @@ export default function ResultsPage() {
     localStorage.removeItem("hcb_pressure_q1")
     localStorage.removeItem("hcb_pressure_q2")
     localStorage.removeItem("hcb_pressure_q3"); localStorage.removeItem("hcb_reflection")
-    localStorage.removeItem("hcb_reflection")
     window.location.href = "/new-blueprint"
   }
     setError("")

@@ -22,10 +22,6 @@ export default function NewBlueprintPage() {
     const currentValue = decisionContext.trim()
     try {
       localStorage.setItem("hcb_decision_context", currentValue)
-      const existingSessionId = localStorage.getItem("hcb_session_id")
-      if (existingSessionId) {
-        window.location.href = "/options"
-        return
       }
       const response = await fetch("https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/sessions/start", {
         method: "POST", headers: getAuthHeaders(),

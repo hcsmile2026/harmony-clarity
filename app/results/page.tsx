@@ -26,6 +26,7 @@ export default function ResultsPage() {
       const decisionContext = localStorage.getItem("hcb_decision_context")
       const optionsStr = localStorage.getItem("hcb_options")
 
+      const existingReflection = localStorage.getItem("hcb_reflection"); if (existingReflection) { setReflection(existingReflection); setIsGenerating(false); return }
       if (!token || !userId || !sessionId) {
         setError("Session data not found. Please start over.")
         setIsGenerating(false)
@@ -75,7 +76,7 @@ export default function ResultsPage() {
           throw new Error(data.message || data.error || "Failed to generate blueprint")
         }
 
-        setReflection(data.reflection || "")
+        setReflection(data.reflection || ""); localStorage.setItem("hcb_reflection", data.reflection || "")
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong")
       } finally {
@@ -100,6 +101,7 @@ export default function ResultsPage() {
     localStorage.removeItem("hcb_pressure_q1")
     localStorage.removeItem("hcb_pressure_q2")
     localStorage.removeItem("hcb_pressure_q3")
+    localStorage.removeItem("hcb_reflection")
     window.location.href = "/new-blueprint"
   }
 

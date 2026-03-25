@@ -82,14 +82,14 @@ export default function OptionsPage() {
         <>
           <ProgressHeader step={2} totalSteps={4} onBack={handleBack} />
           <ClarityCard>
-            <h1 className="font-serif text-[24px] mb-2" style={{ color: "var(--hcb-text-primary)" }}>What are you choosing between?</h1>
-            <p className="text-base mb-6" style={{ color: "var(--hcb-text-secondary)" }}>Add your two options. Be as specific or as open as feels right.</p>
+            <h1 className="font-serif text-[24px] mb-2" style={{ color: "var(--hcb-text-primary)" }}>What are you deciding between?</h1>
+            <p className="text-base mb-6" style={{ color: "var(--hcb-text-secondary)" }}>Enter your two options. Keep them clear and honest.</p>
             <div className="flex flex-col gap-4 mb-4">
               {options.map((option, index) => (
                 <div key={index} className="flex flex-col gap-2">
-                  <label className="text-sm font-medium" style={{ color: "var(--hcb-text-primary)" }}>Option {index + 1}</label>
+                  <label className="text-sm font-medium" style={{ color: "var(--hcb-text-primary)" }}>{index === 0 ? "First path" : "Second path"}</label>
                   <input type="text" value={option} onChange={e => handleOptionChange(index, e.target.value)}
-                    placeholder={`Enter option ${index + 1}`}
+                    placeholder={index === 0 ? "Describe your first path" : "Describe your second path"}
                     style={{ padding: "14px 16px", fontSize: "16px", borderRadius: "10px", border: "1px solid var(--hcb-border)", backgroundColor: "var(--hcb-card-bg)", color: "var(--hcb-text-primary)", outline: "none" }}
                     onFocus={e => { e.currentTarget.style.boxShadow = "0 0 0 2px var(--hcb-focus-ring)"; e.currentTarget.style.borderColor = "var(--hcb-focus-ring)" }}
                     onBlur={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "var(--hcb-border)" }}
@@ -98,9 +98,9 @@ export default function OptionsPage() {
               ))}
             </div>
             
-            <p className="text-sm italic mb-6" style={{ color: "var(--hcb-text-secondary)" }}>These options will guide your Blueprint reflection.</p>
+            <p className="text-sm italic mb-6" style={{ color: "var(--hcb-text-secondary)" }}><strong>This decision is permanent.</strong> <em>Once locked, it cannot be changed and will use one clarity credit.</em></p>
             {error && <div className="mb-4"><InlineError message={error} /></div>}
-            <PrimaryButton fullWidth disabled={!isValid} isLoading={isLoading} onClick={handleSubmit}>Lock In My Options &rarr;</PrimaryButton>
+            <PrimaryButton fullWidth disabled={!isValid} isLoading={isLoading} onClick={handleSubmit}>Lock This Decision →</PrimaryButton>
           </ClarityCard>
         </>
       )}

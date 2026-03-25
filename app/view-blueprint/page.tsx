@@ -61,7 +61,7 @@ export default function ViewBlueprintPage() {
           <SecondaryButton fullWidth onClick={() => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([reflection], { type: "text/plain" })); a.download = "blueprint.txt"; a.click() }}>Download as Text</SecondaryButton>
           <SecondaryButton fullWidth onClick={() => (window.location.href = "/dashboard")}>Back to Dashboard</SecondaryButton>
         </div>
-        <p className="text-[13px] text-center mt-8 no-print" style={{ color: "var(--hcb-text-secondary)" }}>This Blueprint is for reflective and educational purposes only.</p>
+        <p className="text-[13px] text-center mt-8 no-print" style={{ color: "var(--hcb-text-secondary)" }}>This Blueprint is for reflective and entertainment purposes only.</p>
       </AppShell>
     </>
   )

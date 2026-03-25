@@ -294,7 +294,7 @@ export default function ResultsPage() {
         className="text-[13px] text-center mt-8"
         style={{ color: "var(--hcb-text-secondary)" }}
       >
-        This Blueprint is for reflective and educational purposes only. It is
+        This Blueprint is for reflective and entertainment purposes only. It is
         not professional advice of any kind.
       </p>
     </AppShell>

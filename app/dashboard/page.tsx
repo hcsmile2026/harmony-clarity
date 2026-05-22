@@ -166,7 +166,7 @@ export default function DashboardPage() {
 
       {/* Start New Blueprint */}
       <div className="mb-8">
-        {(credits === null || credits > 0) ? (
+        {(credits !== null && credits > 0) ? (
           <PrimaryButton fullWidth onClick={() => { ["hcb_session_id","hcb_options","hcb_decision_context","hcb_pressure_q1","hcb_pressure_q2","hcb_pressure_q3","hcb_options_draft"].forEach(k => localStorage.removeItem(k)); window.location.href = "/new-blueprint"; }}>Start New Blueprint</PrimaryButton>
         ) : (
           <div className="rounded-xl p-4 text-center flex flex-col items-center gap-3" style={{ backgroundColor: "#FEF3C7", border: "1px solid #F59E0B" }}>

@@ -8,11 +8,37 @@ export default function NewBlueprintPage() {
   const [decisionContext, setDecisionContext] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [credits, setCredits] = useState<number | null>(null)
+  const [creditsLoading, setCreditsLoading] = useState(true)
 
   useEffect(() => {
     const saved = localStorage.getItem("hcb_decision_context")
     if (saved) setDecisionContext(saved)
   }, [])
+
+  useEffect(() => {
+    if (isChecking) return
+    const fetchCredits = async () => {
+      const userId = localStorage.getItem("hcb_user_id")
+      try {
+        const res = await fetch(
+          `https://xkyb-0esl-ybtr.n7e.xano.io/api:X8T2HoKo/credits/balance?user_id=${userId}`,
+          { headers: getAuthHeaders() }
+        )
+        if (res.ok) {
+          const data = await res.json()
+          setCredits(data.credits_remaining ?? 0)
+        } else {
+          setCredits(0)
+        }
+      } catch {
+        setCredits(0)
+      } finally {
+        setCreditsLoading(false)
+      }
+    }
+    fetchCredits()
+  }, [isChecking])
 
   const isValid = decisionContext.trim().length >= 20
 
@@ -57,10 +83,21 @@ export default function NewBlueprintPage() {
     }
   }
 
-  if (isChecking) return (
+  if (isChecking || creditsLoading) return (
     <AppShell><div className="flex items-center justify-center min-h-[60vh]">
       <div className="animate-spin h-8 w-8 border-2 rounded-full" style={{ borderColor: "var(--hcb-border)", borderTopColor: "var(--hcb-action-primary)" }} />
     </div></AppShell>
+  )
+
+  if (credits !== null && credits === 0) return (
+    <AppShell>
+      <ProgressHeader step={1} totalSteps={4} onBack={() => window.location.href = "/dashboard"} />
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+        <p className="font-serif text-[26px] mb-3" style={{ color: "var(--hcb-text-primary)" }}>You need credits to start a Blueprint.</p>
+        <p className="text-base mb-6" style={{ color: "var(--hcb-text-secondary)" }}>Purchase credits to unlock your personalised insights.</p>
+        <PrimaryButton onClick={() => window.location.href = "/buy-credits"}>Buy Credits &rarr;</PrimaryButton>
+      </div>
+    </AppShell>
   )
 
   return (

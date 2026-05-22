@@ -102,6 +102,7 @@ export default function DashboardPage() {
     const keysToRemove = [
       "hcb_token",
       "hcb_user_id",
+      "hcb_first_name",
       "hcb_onboarding_done",
       "hcb_session_id",
       "hcb_options",

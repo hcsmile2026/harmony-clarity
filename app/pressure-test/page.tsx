@@ -154,7 +154,7 @@ export default function PressureTestPage() {
           headers,
           body: JSON.stringify({
             option_id: Number(selectedOption.id),
-            question_type: "leaning",
+            question_type: "quiet_signal",
             question_text: "If you had to decide right now, which option would you lean toward?",
             user_response: q1,
           }),
@@ -173,7 +173,7 @@ export default function PressureTestPage() {
           headers,
           body: JSON.stringify({
             option_id: Number(selectedOption.id),
-            question_type: "fear",
+            question_type: "justification",
             question_text: "What's your biggest concern about making the wrong choice?",
             user_response: q2,
           }),
@@ -192,7 +192,7 @@ export default function PressureTestPage() {
           headers,
           body: JSON.stringify({
             option_id: Number(selectedOption.id),
-            question_type: "approach",
+            question_type: "energy",
             question_text: "How are you approaching this decision?",
             user_response: q3,
           }),

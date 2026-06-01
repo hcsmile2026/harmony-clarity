@@ -79,7 +79,7 @@ export default function DashboardPage() {
           const sessionsData = await sessionsRes.json()
           // Handle response shape: { sessions: [...] } or direct array
           const sessionsList = sessionsData.sessions || sessionsData
-          setSessions(Array.isArray(sessionsList) ? [...sessionsList].sort((a,b)=>b.created_at-a.created_at) : [])
+          setSessions(Array.isArray(sessionsList) ? [...sessionsList].sort((a,b)=>new Date(b.created_at).getTime()-new Date(a.created_at).getTime()) : [])
         }
         if (profileRes && profileRes.ok) {
           const pd = await profileRes.json()
@@ -110,6 +110,8 @@ export default function DashboardPage() {
       "hcb_pressure_q1",
       "hcb_pressure_q2",
       "hcb_pressure_q3",
+      "hcb_options_draft",
+      "hcb_reflection",
     ]
     keysToRemove.forEach((key) => localStorage.removeItem(key))
     window.location.href = "/"

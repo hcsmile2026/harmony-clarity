@@ -36,34 +36,20 @@ export default function AuthPage() {
       }
 
       // Store auth data
-      console.log("[v0] Login response data:", JSON.stringify(data))
       localStorage.setItem("hcb_token", data.authToken)
-      
-      // Handle user data - check if user object exists
+
       if (data.user) {
-        console.log("[v0] User object found:", data.user)
         localStorage.setItem("hcb_user_id", String(data.user.id))
         localStorage.setItem("hcb_first_name", data.user.first_name || "")
       } else {
-        console.log("[v0] No user object in response, checking top-level id")
-        // Fallback: try top-level properties
-        if (data.id) {
-          localStorage.setItem("hcb_user_id", String(data.id))
-        }
-        if (data.first_name) {
-          localStorage.setItem("hcb_first_name", data.first_name)
-        }
+        if (data.id) localStorage.setItem("hcb_user_id", String(data.id))
+        if (data.first_name) localStorage.setItem("hcb_first_name", data.first_name)
       }
-      
-      console.log("[v0] Saved to localStorage - user_id:", localStorage.getItem("hcb_user_id"), "first_name:", localStorage.getItem("hcb_first_name"))
 
-      // Redirect based on profile completion
       const profileComplete = data.profile_complete === true || data.user?.profile_complete === true
       if (mode === "login" && profileComplete) {
-        console.log("[v0] Redirecting to dashboard")
         window.location.href = "/dashboard"
       } else {
-        console.log("[v0] Redirecting to onboarding")
         window.location.href = "/onboarding"
       }
     } catch (err) {

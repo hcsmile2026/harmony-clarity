@@ -125,7 +125,8 @@ export default function PressureTestPage() {
     setIsLoading(true)
 
     const sessionId = localStorage.getItem("hcb_session_id")
-    if (!sessionId) {
+    const userId = localStorage.getItem("hcb_user_id")
+    if (!sessionId || !userId) {
       setError("Session not found. Please start over.")
       setIsLoading(false)
       return
@@ -153,6 +154,8 @@ export default function PressureTestPage() {
           method: "POST",
           headers,
           body: JSON.stringify({
+            user_id: Number(userId),
+            session_id: Number(sessionId),
             option_id: Number(selectedOption.id),
             question_type: "quiet_signal",
             question_text: "If you had to decide right now, which option would you lean toward?",
@@ -172,6 +175,8 @@ export default function PressureTestPage() {
           method: "POST",
           headers,
           body: JSON.stringify({
+            user_id: Number(userId),
+            session_id: Number(sessionId),
             option_id: Number(selectedOption.id),
             question_type: "justification",
             question_text: "What's your biggest concern about making the wrong choice?",
@@ -191,6 +196,8 @@ export default function PressureTestPage() {
           method: "POST",
           headers,
           body: JSON.stringify({
+            user_id: Number(userId),
+            session_id: Number(sessionId),
             option_id: Number(selectedOption.id),
             question_type: "energy",
             question_text: "How are you approaching this decision?",

@@ -19,7 +19,6 @@ const libreBaskerville = Libre_Baskerville({
 export const metadata: Metadata = {
   title: 'Harmony Clarity Blueprint',
   description: 'Clarity for your most important decisions. A premium AI-powered decision reflection platform.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {

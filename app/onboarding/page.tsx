@@ -442,7 +442,10 @@ export default function OnboardingPage() {
                 className="text-sm"
                 style={{ color: "var(--hcb-text-primary)" }}
               >
-                I agree to the Terms of Service
+                I agree to the{" "}
+                <a href="/terms" target="_blank" style={{ color: "var(--hcb-action-primary)" }}>
+                  Terms of Service
+                </a>
               </span>
             </label>
 

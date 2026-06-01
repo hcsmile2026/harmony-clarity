@@ -203,7 +203,10 @@ export default function AuthPage() {
           className="text-sm text-center mt-6 max-w-xs"
           style={{ color: "var(--hcb-text-secondary)" }}
         >
-          By continuing, you agree to our Terms of Service and Privacy Policy
+          By continuing, you agree to our{" "}
+          <a href="/terms" style={{ color: "var(--hcb-action-primary)" }}>Terms of Service</a>
+          {" "}and{" "}
+          <a href="/privacy" style={{ color: "var(--hcb-action-primary)" }}>Privacy Policy</a>
         </p>
       </div>
     </AppShell>

@@ -1,0 +1,892 @@
+<!-- ================================================
+     Harmony Clarity — /blueprint Sales Page
+     BLOCK 1 of 3: Main page HTML
+     Paste this into GHL Custom HTML block #1
+     ================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Your Harmony Clarity Blueprint™ for $47</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f7f4ef;
+      color: #2d2d2d;
+      line-height: 1.78;
+      font-size: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Libre Baskerville', serif;
+      color: #1a1a1a;
+      line-height: 1.22;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 2.9rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    h3 {
+      font-size: 1.45rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin: 0 0 1.3rem 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    header {
+      padding: 26px 20px;
+      text-align: center;
+      border-bottom: 1px solid #e8e4dc;
+      background-color: #f7f4ef;
+    }
+
+    .logo {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0;
+    }
+
+    section {
+      padding: 68px 0;
+    }
+
+    .section-alt {
+      background-color: #fdfcfa;
+    }
+
+    .hero {
+      padding: 88px 0 64px;
+      text-align: center;
+    }
+
+    .hero .inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .subheadline {
+      font-size: 1.2rem;
+      line-height: 1.65;
+      color: #3d3d3d;
+      margin-bottom: 1.2rem;
+    }
+
+    .mechanism-line {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #2d2d2d;
+      max-width: 700px;
+      margin: 0 auto 0.85rem;
+    }
+
+    .speed-line {
+      font-size: 1rem;
+      color: #666666;
+      margin-bottom: 0;
+    }
+
+    .micro-commitment {
+      font-size: 0.98rem;
+      color: #5d1621;
+      margin-top: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #6b1824;
+      color: #ffffff;
+      padding: 18px 44px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+      text-align: center;
+    }
+
+    .cta-button:hover {
+      background-color: #56131d;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    .hero .cta-button {
+      margin-top: 1.5rem;
+    }
+
+    .cta-subtext {
+      font-size: 0.95rem;
+      color: #666666;
+      margin-top: 0.85rem;
+    }
+
+    .cta-wrap {
+      text-align: center;
+      margin-top: 34px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e8e4dc;
+      border-radius: 10px;
+      padding: 42px;
+    }
+
+    .card h2,
+    .card h3 {
+      margin-bottom: 1.2rem;
+    }
+
+    .card p {
+      margin-bottom: 1.35rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .scenarios-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .scenario {
+      font-style: italic;
+      margin: 1.4rem 0;
+      padding-left: 1.25rem;
+      border-left: 3px solid #6b1824;
+      color: #3d3d3d;
+      text-align: left;
+    }
+
+    .settled-line {
+      text-align: center;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: #6b1824;
+      margin-top: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .pressure-line {
+      text-align: center;
+      font-size: 1.03rem;
+      color: #3d3d3d;
+      margin-bottom: 0;
+    }
+
+    .blueprint-list {
+      list-style: none;
+      margin-top: 2rem;
+      padding-left: 0;
+    }
+
+    .blueprint-list li {
+      margin-bottom: 2.1rem;
+      padding-left: 0;
+    }
+
+    .blueprint-list strong,
+    .step strong,
+    .system strong {
+      display: block;
+      font-size: 1.05rem;
+      color: #6b1824;
+      margin-bottom: 0.45rem;
+      font-weight: 600;
+    }
+
+    .steps {
+      margin-top: 2rem;
+    }
+
+    .step {
+      margin-bottom: 1.8rem;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .systems-grid {
+      margin-top: 2rem;
+    }
+
+    .system {
+      margin-bottom: 1.55rem;
+    }
+
+    .system:last-child {
+      margin-bottom: 0;
+    }
+
+    .objection {
+      background-color: #fdfcfa;
+      border-left: 4px solid #6b1824;
+      padding: 28px;
+      margin-top: 1.4rem;
+      border-radius: 4px;
+    }
+
+    .objection em {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 1.06rem;
+      color: #5d1621;
+    }
+
+    .final-cta {
+      background-color: #f3efe8;
+      color: #2d2d2d;
+      padding: 76px 0;
+      text-align: center;
+      border-top: 1px solid #e8e4dc;
+      border-bottom: 1px solid #e8e4dc;
+    }
+
+    .final-cta .inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    .final-cta h2 {
+      color: #1a1a1a;
+      margin-bottom: 1.2rem;
+      font-size: 2.1rem;
+    }
+
+    .final-cta p {
+      color: #3d3d3d;
+      font-size: 1.06rem;
+      margin-bottom: 1rem;
+    }
+
+    .final-cta .cta-wrap {
+      margin-top: 34px;
+    }
+
+    .faq-bridge {
+      text-align: center;
+      padding: 34px 20px 10px;
+      color: #5d1621;
+    }
+
+    .faq-bridge em {
+      font-size: 0.98rem;
+    }
+
+    .faq-section {
+      padding: 24px 0 60px;
+    }
+
+    .faq-card {
+      background-color: #ffffff;
+      border: 1px solid #d9d2c7;
+      border-radius: 18px;
+      padding: 26px 26px 20px;
+      overflow: hidden;
+    }
+
+    .faq-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #143cff;
+      margin-bottom: 1.8rem;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 36px;
+      row-gap: 26px;
+    }
+
+    .faq-item h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .faq-item p {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #2d2d2d;
+      margin-bottom: 0.95rem;
+    }
+
+    footer {
+      background-color: #23364d;
+      color: #ffffff;
+      padding: 22px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 17px;
+        line-height: 1.76;
+      }
+
+      h1 {
+        font-size: 2.15rem;
+      }
+
+      h2 {
+        font-size: 1.65rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .hero {
+        padding: 64px 0 44px;
+      }
+
+      .subheadline,
+      .mechanism-line,
+      .speed-line,
+      p,
+      li {
+        font-size: 1rem;
+      }
+
+      .card {
+        padding: 28px 22px;
+      }
+
+      .cta-button {
+        width: 100%;
+        max-width: 340px;
+        padding: 17px 24px;
+        font-size: 1rem;
+      }
+
+      .faq-card {
+        padding: 22px 18px 18px;
+        border-radius: 14px;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+        row-gap: 22px;
+      }
+
+      .faq-title {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://harmonyclarity.com" class="logo">Harmony Clarity™</a>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="inner">
+        <h1>The decision you keep revisiting isn't going away.</h1>
+
+        <div class="subheadline">
+          <p>You do not need more opinions. You need a <strong>clear answer</strong> you can trust.</p>
+        </div>
+
+        <p class="mechanism-line">
+          <strong>The Harmony Clarity Blueprint™ is calculated from your exact birth data to show which path actually holds, based on how you are built.</strong>
+        </p>
+
+        <p class="speed-line"><em>Clear direction in under 10 minutes.</em></p>
+        <br>
+        <a href="https://app.harmonyclarity.com/buy-credits" class="cta-button">Get Your Clear Answer for $47</a>
+
+        <br><div class="cta-subtext">Calculated from your exact birth data. Delivered in minutes.</div>
+        <div class="micro-commitment"><em>If this decision has been following you, it is time to make it clear.</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card">
+        <h2>Pros and cons lists do not work for decisions that matter.</h2>
+
+        <p><strong>Most decisions like this are not logic problems.<br>They are alignment problems.</strong></p>
+
+        <p>You already know the facts. That is not what is missing.</p>
+
+        <p>What you are missing is a <strong>clear view</strong> of which path actually fits how you are built, your patterns, your timing, and your natural direction.</p>
+
+        <p><strong>That is what the Blueprint gives you.</strong></p>
+
+        <p><em>That is why this decision has not resolved yet.</em></p>
+
+        <div class="cta-wrap">
+          <a href="https://app.harmonyclarity.com/buy-credits" class="cta-button">Get Your Clear Answer for $47</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="scenarios-wrap">
+        <h2 class="center" style="margin-bottom: 2.35rem;">This is usually where people are when they come here:</h2>
+
+        <div class="scenario">
+          Should I stay in a career that looks right on paper but feels wrong every day, or leave and face the uncertainty of starting over?
+        </div>
+
+        <div class="scenario">
+          Should I stay in this relationship because it is familiar, or walk away knowing I may not get this time back?
+        </div>
+
+        <div class="scenario">
+          Should I keep investing in this path because I have already come this far, or admit it is not right and change direction now?
+        </div>
+
+        <p class="center" style="margin-top: 2.3rem; font-size: 1.05rem;"><strong>Different situations. Same problem.</strong></p>
+
+        <p class="settled-line">Nothing feels settled.</p>
+        <p class="pressure-line">And the longer it stays like that, the harder it is to move.</p>
+
+        <div class="cta-wrap" style="margin-top: 35px;">
+          <a href="https://app.harmonyclarity.com/buy-credits" class="cta-button">Get Your Clear Answer for $47</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card">
+        <h2>What is the Harmony Clarity Blueprint™?</h2>
+
+        <p><strong>This is not advice.<br>It is not guesswork.</strong></p>
+
+        <p>Your birth data contains <strong>consistent patterns</strong> in how you move, where things hold, and where they do not.</p>
+
+        <p>The Harmony Clarity Blueprint™ is the system that gives you a <strong>clear answer</strong> you can act on.</p>
+
+        <p>The Blueprint applies that structure directly to the decision you are facing.</p>
+
+        <p><em>Not general insight. Not personality types.</em></p>
+
+        <p><strong>Your situation, made clear enough to act on.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="card">
+        <h2>What you will receive</h2>
+
+        <ul class="blueprint-list">
+          <li>
+            <strong>Your Clear Direction</strong>
+            What holds when everything is stripped down.
+          </li>
+          <li>
+            <strong>Why This Is Coming Up Now</strong>
+            Why the pressure is showing up and what is changing underneath it.
+          </li>
+          <li>
+            <strong>What Changes</strong>
+            What changes if you follow it and what stays stuck if you do not.
+          </li>
+          <li>
+            <strong>What Your Birth Data Points To</strong>
+            Calculated from multiple systems around the same decision.
+          </li>
+          <li>
+            <strong>Your Natural Edge</strong>
+            Where this path fits how you operate without forcing it.
+          </li>
+          <li>
+            <strong>Your Action Plan</strong>
+            Fourteen days of movement. Simple. Direct.
+          </li>
+          <li>
+            <strong>Your Next Move</strong>
+            What to do within the next forty eight hours.
+          </li>
+        </ul>
+
+        <div class="cta-wrap">
+          <a href="https://app.harmonyclarity.com/buy-credits" class="cta-button">Get Your Clear Answer for $47</a>
+          <div class="cta-subtext">One time payment. Instant access.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card">
+        <h2>How it works</h2>
+        <p>Simple. No setup. No learning curve.</p>
+
+        <div class="steps">
+          <div class="step">
+            <strong>Step 1. Describe your decision</strong>
+            What you are actually facing.
+          </div>
+          <div class="step">
+            <strong>Step 2. Name the two paths</strong>
+            Keep both options honest.
+          </div>
+          <div class="step">
+            <strong>Step 3. Answer three pressure questions</strong>
+            Questions that cut through overthinking and show what is already there.
+          </div>
+          <div class="step">
+            <strong>Step 4. Receive your Blueprint</strong>
+            A full report built for your situation, ready in minutes.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="card">
+        <h2>Multiple systems. One direction.</h2>
+
+        <p>Each system calculates a different part of your decision and shows which path actually holds.<br>Together, they remove noise.</p>
+
+        <div class="systems-grid">
+          <div class="system">
+            <strong>Your core patterns</strong>
+            How you naturally move through decisions.
+          </div>
+          <div class="system">
+            <strong>Your strengths and friction points</strong>
+            Where things hold and where they break.
+          </div>
+          <div class="system">
+            <strong>Your timing and direction</strong>
+            What is shifting beneath the surface.
+          </div>
+        </div>
+
+        <p style="margin-top: 2rem;">You do not need to understand the systems to use this.<br>You only need to recognize whether the patterns match what you already know.</p>
+
+        <p><strong>This is not about belief.</strong><br>It is about recognizing patterns that repeat and using them to decide.</p>
+
+        <p><em>When it is clear, it also feels like harmony.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card">
+        <h3>Still thinking it through?</h3>
+
+        <div class="objection">
+          <em>"Am I just going to hear what I already know?"</em>
+          <p>Sometimes.</p>
+          <p>But right now, what you know is not clear enough to act on.</p>
+          <p>That is the problem.</p>
+          <p>This does not add more information.<br>It removes the noise around it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="card">
+        <h2>Why this exists</h2>
+        <p>My name is Neary Heng.</p>
+        <p>I have lived through real pressure where decisions are not theoretical.</p>
+        <p>You learn quickly in those conditions.</p>
+        <p>Overthinking does not help. Opinions do not help.</p>
+        <p><strong>Clarity does.</strong></p>
+        <p>This was built for people who do not want to spend the next two years going back and forth on something they already know matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="inner">
+      <h2>You already know this decision matters.</h2>
+
+      <p>You do not need more time with it.<br>You need <strong>clarity strong enough to move</strong>.</p>
+
+      <p><strong>One Blueprint.<br>One clear answer.<br>One decision.</strong></p>
+
+      <p><em>This is where you decide what to do next.</em></p>
+
+      <div class="cta-wrap">
+        <a href="https://app.harmonyclarity.com/buy-credits" class="cta-button">Get Your Clear Answer for $47</a>
+        <div class="cta-subtext">Calculated from your exact birth data. Delivered in minutes.</div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+
+<!-- ================================================
+     BLOCK 2 of 3: FAQ section
+     Paste this into GHL Custom HTML block #2
+     ================================================ -->
+<style>
+.hc-faq-bridge {
+  text-align: center;
+  padding: 34px 20px 10px;
+  color: #5d1621;
+}
+
+.hc-faq-bridge em {
+  font-size: 0.98rem;
+  font-style: italic;
+}
+
+.hc-faq-section {
+  padding: 24px 0 70px;
+}
+
+.hc-faq-card {
+  background-color: #ffffff;
+  border: 1px solid #e8e4dc;
+  border-radius: 14px;
+  padding: 34px 30px 28px;
+  margin-top: 20px;
+}
+
+.hc-faq-title {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #1a1a1a !important;
+  margin-bottom: 2rem;
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.hc-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
+  row-gap: 30px;
+}
+
+.hc-faq-item h3 {
+  font-size: 1.08rem;
+  margin-bottom: 0.7rem;
+  color: #1a1a1a !important;
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.hc-faq-item p {
+  font-size: 0.96rem;
+  line-height: 1.72;
+  color: #2d2d2d !important;
+  margin-bottom: 0.65rem;
+}
+
+.hc-faq-item p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .hc-faq-section {
+    padding: 20px 0 55px;
+  }
+
+  .hc-faq-card {
+    padding: 24px 20px 20px;
+    border-radius: 12px;
+  }
+
+  .hc-faq-title {
+    font-size: 1.65rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hc-faq-grid {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+
+  .hc-faq-item h3 {
+    font-size: 1.02rem;
+  }
+
+  .hc-faq-item p {
+    font-size: 0.95rem;
+  }
+}
+</style>
+
+<div class="hc-faq-bridge">
+  <em>If you still have questions, here are the direct answers.</em>
+</div>
+
+<section class="hc-faq-section">
+  <div class="container">
+    <div class="hc-faq-card">
+      <h2 class="hc-faq-title">Frequently Asked Questions</h2>
+
+      <div class="hc-faq-grid">
+
+        <div class="hc-faq-item">
+          <h3>What is the Harmony Clarity Blueprint™?</h3>
+          <p>The Harmony Clarity Blueprint™ is a personalized decision analysis calculated from your exact birth data.</p>
+          <p>It shows which path actually holds based on your patterns, timing, and natural direction.</p>
+          <p>This is not general advice. It is specific to your situation.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>How is this different from a pros and cons list?</h3>
+          <p>Pros and cons lists rely on surface logic.</p>
+          <p>This uses structured pattern analysis to reveal which option aligns with how you are built.</p>
+          <p>Instead of weighing options, it shows what actually holds.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>How does it use my birth data?</h3>
+          <p>Your birth data is used to calculate consistent patterns in how you move, where things hold, and where they break.</p>
+          <p>Multiple systems are applied together to remove noise and isolate what actually matters for your decision.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>Is this astrology?</h3>
+          <p>This draws from established systems, but it is not presented as belief or loose interpretation.</p>
+          <p>It is structured, calculated, and focused on decision clarity.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>What kind of decisions is this for?</h3>
+          <p>This is for decisions that keep returning and do not resolve.</p>
+          <p>Career changes, relationships, major life direction, or any choice where both options feel significant.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>What will I receive?</h3>
+          <p>You will receive a clear answer, why this decision is coming up now, what changes depending on your choice, and what to do next.</p>
+          <p>Everything is centered around one decision.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>How long does it take?</h3>
+          <p>Your Harmony Clarity Blueprint™ is delivered shortly after you complete your inputs.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>Do I need to understand the systems?</h3>
+          <p>No.</p>
+          <p>You only need to recognize whether the patterns match what you already know.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>What if I do not know my exact birth time?</h3>
+          <p>You can still proceed with approximate information.</p>
+          <p>The more accurate your details, the more precise the result.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>Is this a prediction of my future?</h3>
+          <p>No.</p>
+          <p>This does not predict outcomes. It shows which path is aligned and which is not.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>Why is this $47?</h3>
+          <p>This is a focused decision tool designed to give clarity quickly.</p>
+          <p>It is priced to be accessible without requiring long term commitment.</p>
+        </div>
+
+        <div class="hc-faq-item">
+          <h3>What happens after I receive it?</h3>
+          <p>You use it to decide.</p>
+          <p>The goal is not more reflection. The goal is movement.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     BLOCK 3 of 3: Footer links
+     Paste this into GHL Custom HTML block #3
+     ================================================ -->
+<p style="margin:0; font-size:14px; text-align:center;">
+  <a href="https://harmonyclarity.com/privacy-policy" target="_blank" rel="noopener noreferrer" style="color:#9AA5B4; text-decoration:none; margin:0 8px;">
+    Privacy Policy
+  </a>
+  |
+  <a href="https://harmonyclarity.com/terms-of-service" target="_blank" rel="noopener noreferrer" style="color:#9AA5B4; text-decoration:none; margin:0 8px;">
+    Terms of Service
+  </a>
+</p>

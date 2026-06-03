@@ -1,0 +1,347 @@
+<!-- ================================================
+     Harmony Clarity — /decide Lead Magnet Page
+     Paste this into GHL Custom HTML block
+     ================================================ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+  .hcb-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .hcb-wrap {
+    background-color: #F7F4EF;
+    font-family: 'Inter', sans-serif;
+    color: #1F2933;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 64px;
+  }
+
+  .hcb-topbar {
+    background-color: #F7F4EF;
+    border-bottom: 1px solid #E6E1D9;
+    padding: 16px 24px;
+    text-align: center;
+  }
+
+  .hcb-topbar-star {
+    color: #7A1E2C;
+    font-size: 20px;
+  }
+
+  .hcb-topbar-name {
+    margin-left: 10px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    color: #1F2933;
+    letter-spacing: 0.02em;
+  }
+
+  .hcb-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .hcb-hero {
+    text-align: center;
+    padding: 64px 0 48px;
+  }
+
+  .hcb-star-lg {
+    color: #7A1E2C;
+    font-size: 28px;
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .hcb-h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(26px, 6vw, 38px);
+    font-weight: 700;
+    color: #1F2933;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+
+  .hcb-subhead {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #7A1E2C;
+  }
+
+  .hcb-divider {
+    width: 40px;
+    height: 1px;
+    background-color: #E6E1D9;
+    margin: 0 auto 48px;
+  }
+
+  .hcb-opening {
+    margin-bottom: 48px;
+  }
+
+  .hcb-serif-line {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 19px;
+    color: #1F2933;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  .hcb-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #4A5568;
+    line-height: 1.8;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  .hcb-quote {
+    background: #FFFFFF;
+    border-left: 3px solid #7A1E2C;
+    border-radius: 0 12px 12px 0;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .hcb-quote p {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #1F2933;
+    line-height: 1.8;
+  }
+
+  .hcb-card {
+    background: #FFFFFF;
+    border: 1px solid #E6E1D9;
+    border-radius: 16px;
+    padding: 40px 32px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    margin-bottom: 48px;
+  }
+
+  .hcb-card-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: #1F2933;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .hcb-card-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #9AA5B4;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .hcb-inside-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #9AA5B4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .hcb-tests {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .hcb-test-card {
+    background: #FFFFFF;
+    border: 1px solid #E6E1D9;
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .hcb-test-star {
+    color: #7A1E2C;
+    font-size: 14px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .hcb-test-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1F2933;
+    margin-bottom: 4px;
+  }
+
+  .hcb-test-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #4A5568;
+    line-height: 1.6;
+  }
+
+  .hcb-plus {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #4A5568;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+
+  .hcb-tagline {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #1F2933;
+    text-align: center;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .hcb-footer {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #9AA5B4;
+    text-align: center;
+  }
+
+  .hcb-footer a {
+    color: #9AA5B4;
+    text-decoration: none;
+  }
+
+  .hcb-footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="hcb-wrap">
+
+  <!-- Top bar -->
+  <div class="hcb-topbar">
+    <span class="hcb-topbar-star">✦</span>
+    <span class="hcb-topbar-name">Harmony Clarity</span>
+  </div>
+
+  <div class="hcb-inner">
+
+    <!-- Hero -->
+    <div class="hcb-hero">
+      <span class="hcb-star-lg">✦</span>
+      <h1 class="hcb-h1">The 3 Questions That Actually Settle a Decision</h1>
+      <p class="hcb-subhead">When everything else keeps you circling</p>
+    </div>
+
+    <div class="hcb-divider"></div>
+
+    <!-- Opening -->
+    <div class="hcb-opening">
+      <p class="hcb-serif-line">You're not confused.</p>
+      <p class="hcb-serif-line">You've already done the thinking.</p>
+      <p class="hcb-serif-line">You know the options.</p>
+      <p class="hcb-serif-line">You've weighed both sides.</p>
+      <p class="hcb-body">What you don't have is clarity strong enough to commit.</p>
+      <p class="hcb-body">That's not a thinking problem. That's a decision problem.</p>
+      <p class="hcb-body" style="margin-bottom:0">Most decision frameworks add more to consider. These 3 questions do the opposite — they cut through everything and show you what actually matters.</p>
+    </div>
+
+    <div class="hcb-divider"></div>
+
+    <!-- Credibility -->
+    <div class="hcb-quote">
+      <p>These questions come from someone who learned decision clarity at 5 years old — when there was no time to overthink and no room for wrong moves. They're survival-tested. They cut through. They work.</p>
+    </div>
+
+    <!-- Form -->
+    <div class="hcb-card">
+      <h2 class="hcb-card-title">Get the 3 questions now.</h2>
+      <p class="hcb-card-sub">Enter your details below for immediate access.</p>
+
+      <iframe
+        src="https://updates.smartautomatedsystems.com/widget/form/Yxc5ZdCUS0kSKPk1Ahnz"
+        style="width:100%;height:100%;border:none;border-radius:4px"
+        id="inline-Yxc5ZdCUS0kSKPk1Ahnz"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Form_Lead Magnet Blueprint PDF"
+        data-height="409"
+        data-layout-iframe-id="inline-Yxc5ZdCUS0kSKPk1Ahnz"
+        data-form-id="Yxc5ZdCUS0kSKPk1Ahnz"
+        title="Form_Lead Magnet Blueprint PDF">
+      </iframe>
+      <script src="https://updates.smartautomatedsystems.com/js/form_embed.js"></script>
+    </div>
+
+<script>
+  window.addEventListener('message', function(e) {
+    if (!e.data) return;
+    var d = e.data;
+    if (
+      (typeof d === 'object' && (d.type === 'form_submitted' || d.event === 'form_submitted')) ||
+      (typeof d === 'string' && d.indexOf('form_submitted') !== -1)
+    ) {
+      window.location.href = 'https://harmonyclarity.com/tydecide';
+    }
+  });
+</script>
+
+    <!-- What's Inside -->
+    <p class="hcb-inside-label">Inside this guide</p>
+
+    <div class="hcb-tests">
+      <div class="hcb-test-card">
+        <span class="hcb-test-star">✦</span>
+        <div>
+          <p class="hcb-test-name">The Coffin Test</p>
+          <p class="hcb-test-desc">What would your soul still ache to experience?</p>
+        </div>
+      </div>
+      <div class="hcb-test-card">
+        <span class="hcb-test-star">✦</span>
+        <div>
+          <p class="hcb-test-name">The Energy Test</p>
+          <p class="hcb-test-desc">What would make you excited for Monday morning?</p>
+        </div>
+      </div>
+      <div class="hcb-test-card">
+        <span class="hcb-test-star">✦</span>
+        <div>
+          <p class="hcb-test-name">The Fear Test</p>
+          <p class="hcb-test-desc">What scares you but makes you come alive?</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="hcb-plus">Plus: How to use all three together to see which path actually holds.</p>
+
+    <div class="hcb-divider" style="margin-top:48px"></div>
+
+    <!-- Footer tagline -->
+    <p class="hcb-tagline">No fluff. No theory.<br>Just what cuts through when nothing else does.</p>
+
+    <!-- Footer links -->
+    <p class="hcb-footer">
+      <a href="https://app.harmonyclarity.com/privacy">Privacy Policy</a>
+      <span style="margin:0 8px">|</span>
+      <a href="https://app.harmonyclarity.com/terms">Terms of Service</a>
+    </p>
+
+  </div>
+</div>

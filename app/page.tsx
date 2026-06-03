@@ -47,8 +47,12 @@ export default function AuthPage() {
       }
 
       const profileComplete = data.profile_complete === true || data.user?.profile_complete === true
-      if (mode === "login" && profileComplete) {
-        window.location.href = "/dashboard"
+      if (mode === "signup") {
+        window.location.href = "/onboarding"
+      } else if (profileComplete) {
+        const params = new URLSearchParams(window.location.search)
+        const next = params.get("next")
+        window.location.href = next || "/dashboard"
       } else {
         window.location.href = "/onboarding"
       }

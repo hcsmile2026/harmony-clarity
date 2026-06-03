@@ -8,7 +8,8 @@ export function useAuthCheck() {
   useEffect(() => {
     const token = localStorage.getItem("hcb_token")
     if (!token) {
-      window.location.href = "/"
+      const next = encodeURIComponent(window.location.pathname)
+      window.location.href = `/?next=${next}`
     } else {
       setIsAuthenticated(true)
     }

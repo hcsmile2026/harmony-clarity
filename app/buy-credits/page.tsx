@@ -8,7 +8,7 @@ import {
   PrimaryButton,
   InlineError,
 } from "@/components/hcb"
-import { useAuthCheck, getAuthHeaders } from "@/hooks/use-auth-check"
+import { getAuthHeaders } from "@/hooks/use-auth-check"
 
 const features = [
   "Full AI-powered decision reflection",
@@ -19,12 +19,16 @@ const features = [
 ]
 
 export default function BuyCreditsPage() {
-  const { isChecking } = useAuthCheck()
-
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
   const handlePurchase = async () => {
+    const token = localStorage.getItem("hcb_token")
+    if (!token) {
+      window.location.href = "/?next=%2Fbuy-credits"
+      return
+    }
+
     setError("")
     setIsLoading(true)
 
@@ -49,22 +53,6 @@ export default function BuyCreditsPage() {
       setError(err instanceof Error ? err.message : "Something went wrong")
       setIsLoading(false)
     }
-  }
-
-  if (isChecking) {
-    return (
-      <AppShell>
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div
-            className="animate-spin h-8 w-8 border-2 rounded-full"
-            style={{
-              borderColor: "var(--hcb-border)",
-              borderTopColor: "var(--hcb-action-primary)",
-            }}
-          />
-        </div>
-      </AppShell>
-    )
   }
 
   return (

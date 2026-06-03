@@ -1,12 +1,22 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { AppShell, ClarityCard, PrimaryButton, InlineError } from "@/components/hcb"
 
 type AuthMode = "login" | "signup"
 
 export default function AuthPage() {
   const [mode, setMode] = useState<AuthMode>("login")
+  const [isCheckout, setIsCheckout] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const next = params.get("next")
+    if (next === "/checkout") {
+      setMode("signup")
+      setIsCheckout(true)
+    }
+  }, [])
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
@@ -73,6 +83,21 @@ export default function AuthPage() {
         >
           &#10022;
         </div>
+
+        {/* Checkout context banner */}
+        {isCheckout && (
+          <div
+            className="w-full text-center text-sm px-4 py-3 rounded-xl mb-4"
+            style={{
+              backgroundColor: "var(--hcb-card-bg)",
+              border: "1px solid var(--hcb-border)",
+              color: "var(--hcb-text-secondary)",
+            }}
+          >
+            <span style={{ color: "var(--hcb-action-primary)" }}>&#10022;</span>
+            {"  "}Create a free account to complete your $47 Blueprint purchase.
+          </div>
+        )}
 
         {/* Title */}
         <h1

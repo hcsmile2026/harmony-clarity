@@ -8,13 +8,18 @@ type AuthMode = "login" | "signup"
 export default function AuthPage() {
   const [mode, setMode] = useState<AuthMode>("login")
   const [isCheckout, setIsCheckout] = useState(false)
+  const [isPurchaseContext, setIsPurchaseContext] = useState(false)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const next = params.get("next")
+    const context = params.get("context")
     if (next === "/checkout") {
       setMode("signup")
       setIsCheckout(true)
+    }
+    if (context === "purchase") {
+      setIsPurchaseContext(true)
     }
   }, [])
   const [email, setEmail] = useState("")
@@ -96,6 +101,21 @@ export default function AuthPage() {
           >
             <span style={{ color: "var(--hcb-action-primary)" }}>&#10022;</span>
             {"  "}Create a free account to complete your $47 Blueprint purchase.
+          </div>
+        )}
+
+        {/* Post-purchase context banner */}
+        {isPurchaseContext && (
+          <div
+            className="w-full text-center text-sm px-4 py-3 rounded-xl mb-4"
+            style={{
+              backgroundColor: "var(--hcb-card-bg)",
+              border: "1px solid var(--hcb-border)",
+              color: "var(--hcb-text-secondary)",
+            }}
+          >
+            <span style={{ color: "var(--hcb-action-primary)" }}>&#10022;</span>
+            {"  "}Your Blueprint credit is ready. Log in or create an account to access it.
           </div>
         )}
 

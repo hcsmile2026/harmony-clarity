@@ -1,12 +1,25 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { AppShell, ClarityCard, PrimaryButton, SecondaryButton } from "@/components/hcb"
-import { useAuthCheck } from "@/hooks/use-auth-check"
+
+const FEATURES = [
+  "Full AI-powered decision reflection",
+  "Birth Blueprint Analysis",
+  "Your Next 14 Days action plan",
+  "Reflection Question",
+  "Save to PDF",
+]
 
 export default function PaymentSuccessPage() {
-  const { isChecking } = useAuthCheck()
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
 
-  if (isChecking) {
+  useEffect(() => {
+    const token = localStorage.getItem("hcb_token")
+    setIsAuthenticated(!!token)
+  }, [])
+
+  if (isAuthenticated === null) {
     return (
       <AppShell>
         <div className="flex items-center justify-center min-h-[60vh]">
@@ -39,7 +52,9 @@ export default function PaymentSuccessPage() {
           className="text-base mb-8"
           style={{ color: "var(--hcb-text-secondary)" }}
         >
-          Your Blueprint credit has been added to your account.
+          {isAuthenticated
+            ? "Your Blueprint credit has been added to your account."
+            : "Your payment was received. Create an account or log in to access your Blueprint credit."}
         </p>
 
         <ClarityCard className="w-full mb-8 text-left">
@@ -50,13 +65,7 @@ export default function PaymentSuccessPage() {
             What you unlocked
           </p>
           <ul className="flex flex-col gap-3">
-            {[
-              "Full AI-powered decision reflection",
-              "Birth Blueprint Analysis",
-              "Your Next 14 Days action plan",
-              "Reflection Question",
-              "Save to PDF",
-            ].map((feature) => (
+            {FEATURES.map((feature) => (
               <li key={feature} className="flex items-start gap-3">
                 <span className="text-base mt-0.5" style={{ color: "var(--hcb-action-primary)" }}>
                   &#10022;
@@ -69,14 +78,25 @@ export default function PaymentSuccessPage() {
           </ul>
         </ClarityCard>
 
-        <div className="flex flex-col gap-3 w-full">
-          <PrimaryButton fullWidth onClick={() => (window.location.href = "/new-blueprint")}>
-            Start My Blueprint &rarr;
-          </PrimaryButton>
-          <SecondaryButton fullWidth onClick={() => (window.location.href = "/dashboard")}>
-            Go to Dashboard
-          </SecondaryButton>
-        </div>
+        {isAuthenticated ? (
+          <div className="flex flex-col gap-3 w-full">
+            <PrimaryButton fullWidth onClick={() => (window.location.href = "/new-blueprint")}>
+              Start My Blueprint &rarr;
+            </PrimaryButton>
+            <SecondaryButton fullWidth onClick={() => (window.location.href = "/dashboard")}>
+              Go to Dashboard
+            </SecondaryButton>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3 w-full">
+            <PrimaryButton fullWidth onClick={() => (window.location.href = "/?next=%2Fdashboard&context=purchase")}>
+              Create Account or Log In &rarr;
+            </PrimaryButton>
+            <p className="text-sm" style={{ color: "var(--hcb-text-secondary)" }}>
+              Your credit will be waiting when you sign in.
+            </p>
+          </div>
+        )}
       </div>
     </AppShell>
   )

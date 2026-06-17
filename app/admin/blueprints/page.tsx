@@ -169,11 +169,14 @@ export default function AdminBlueprintsPage() {
                       userSelect: "none",
                     }}
                   >
-                    <div>
+                    <div style={{ flex: 1 }}>
                       <p style={{ margin: 0, fontWeight: 600, color: "#1F2933", fontSize: 15 }}>
                         {item.first_name || "Unknown"}
                       </p>
-                      <p style={{ margin: "2px 0 0", color: "#4A5568", fontSize: 13 }}>{item.email}</p>
+                      <p style={{ margin: "2px 0 4px", color: "#4A5568", fontSize: 13 }}>{item.email}</p>
+                      <p style={{ margin: 0, fontSize: 12, color: isActive ? "#7A1E2C" : "#9B6E77", fontWeight: 500 }}>
+                        {isActive ? "Reviewing ✦" : "Click to review →"}
+                      </p>
                       {item.attempt_number > 1 && (
                         <span style={{
                           display: "inline-block", marginTop: 6,
@@ -184,7 +187,6 @@ export default function AdminBlueprintsPage() {
                         </span>
                       )}
                     </div>
-                    <span style={{ color: isActive ? "#7A1E2C" : "#C5A8B0", fontSize: 18, fontWeight: 300 }}>›</span>
                   </div>
                 )
               })}
@@ -251,11 +253,18 @@ export default function AdminBlueprintsPage() {
               </div>
             ) : (
               <div style={{
-                flex: 1, background: "#fff", border: "1px solid #E6E1D9",
+                flex: 1, background: "#fff", border: "2px dashed #E6E1D9",
                 borderRadius: 12, padding: 40, textAlign: "center",
-                display: "flex", alignItems: "center", justifyContent: "center",
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                gap: 12,
               }}>
-                <p style={{ color: "#4A5568" }}>Select a Blueprint to review.</p>
+                <div style={{ fontSize: 32, color: "#E6E1D9" }}>←</div>
+                <p style={{ margin: 0, color: "#1F2933", fontWeight: 600, fontSize: 15 }}>
+                  Open a Blueprint to review
+                </p>
+                <p style={{ margin: 0, color: "#4A5568", fontSize: 13, maxWidth: 220, lineHeight: 1.6 }}>
+                  Click any name on the left to read the Blueprint and approve or reject it.
+                </p>
               </div>
             )}
           </div>

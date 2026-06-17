@@ -144,6 +144,9 @@ export default function OrderPage() {
                   onChange={set("time_of_birth")}
                   style={inputStyle}
                 />
+                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#4A5568", lineHeight: 1.5 }}>
+                  For greater accuracy, include your time of birth if you know it. If not, leave it blank — your Blueprint will still be personalised using your date of birth and location.
+                </p>
               </div>
 
               {/* Location */}

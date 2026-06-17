@@ -26,6 +26,7 @@ export default function AdminBlueprintsPage() {
   const [loading, setLoading] = useState(true)
   const [activeId, setActiveId] = useState<number | null>(null)
   const [actionLoading, setActionLoading] = useState<number | null>(null)
+  const [hoverId, setHoverId] = useState<number | null>(null)
   const [toast, setToast] = useState("")
 
   const load = async () => {
@@ -145,34 +146,48 @@ export default function AdminBlueprintsPage() {
           <div style={{ display: "flex", gap: 24 }}>
             {/* List */}
             <div style={{ width: 280, flexShrink: 0 }}>
-              {items.map((item) => (
-                <div
-                  key={item.id}
-                  onClick={() => setActiveId(item.id)}
-                  style={{
-                    background: activeId === item.id ? "#fff" : "#FDFBF8",
-                    border: `1px solid ${activeId === item.id ? "#7A1E2C" : "#E6E1D9"}`,
-                    borderRadius: 10,
-                    padding: "16px 18px",
-                    marginBottom: 10,
-                    cursor: "pointer",
-                  }}
-                >
-                  <p style={{ margin: 0, fontWeight: 600, color: "#1F2933", fontSize: 15 }}>
-                    {item.first_name || "Unknown"}
-                  </p>
-                  <p style={{ margin: "2px 0 0", color: "#4A5568", fontSize: 13 }}>{item.email}</p>
-                  {item.attempt_number > 1 && (
-                    <span style={{
-                      display: "inline-block", marginTop: 6,
-                      background: "#FFF3CD", color: "#856404",
-                      fontSize: 11, padding: "2px 8px", borderRadius: 4,
-                    }}>
-                      Attempt {item.attempt_number}
-                    </span>
-                  )}
-                </div>
-              ))}
+              {items.map((item) => {
+                const isActive = activeId === item.id
+                const isHovered = hoverId === item.id
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => setActiveId(item.id)}
+                    onMouseEnter={() => setHoverId(item.id)}
+                    onMouseLeave={() => setHoverId(null)}
+                    style={{
+                      background: isActive ? "#fff" : isHovered ? "#F7F4EF" : "#FDFBF8",
+                      border: `1px solid ${isActive ? "#7A1E2C" : isHovered ? "#C5A8B0" : "#E6E1D9"}`,
+                      borderRadius: 10,
+                      padding: "14px 16px",
+                      marginBottom: 10,
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      transition: "background 0.1s, border-color 0.1s",
+                      userSelect: "none",
+                    }}
+                  >
+                    <div>
+                      <p style={{ margin: 0, fontWeight: 600, color: "#1F2933", fontSize: 15 }}>
+                        {item.first_name || "Unknown"}
+                      </p>
+                      <p style={{ margin: "2px 0 0", color: "#4A5568", fontSize: 13 }}>{item.email}</p>
+                      {item.attempt_number > 1 && (
+                        <span style={{
+                          display: "inline-block", marginTop: 6,
+                          background: "#FFF3CD", color: "#856404",
+                          fontSize: 11, padding: "2px 8px", borderRadius: 4,
+                        }}>
+                          Attempt {item.attempt_number}
+                        </span>
+                      )}
+                    </div>
+                    <span style={{ color: isActive ? "#7A1E2C" : "#C5A8B0", fontSize: 18, fontWeight: 300 }}>›</span>
+                  </div>
+                )
+              })}
             </div>
 
             {/* Detail */}

@@ -153,7 +153,7 @@ export default function BuyCreditsPage() {
             className="text-[13px] mt-2"
             style={{ color: "var(--hcb-text-secondary)" }}
           >
-            Your Blueprint is generated instantly after purchase.
+            Your credit is added instantly. Start your Blueprint from the dashboard.
           </p>
         </div>
       </ClarityCard>

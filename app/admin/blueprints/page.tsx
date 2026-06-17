@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useAuthCheck } from "@/hooks/use-auth-check"
+import { useAuthCheck, getAuthHeaders } from "@/hooks/use-auth-check"
 
 const XANO = "https://xkyb-0esl-ybtr.n7e.xano.io/api:lsRTcA3V"
 
 interface BlueprintItem {
-  blueprint_id: number
+  id: number
   order_id: number
   blueprint_text: string
   attempt_number: number
@@ -31,7 +31,9 @@ export default function AdminBlueprintsPage() {
   const load = async () => {
     setLoading(true)
     try {
-      const res = await fetch(`${XANO}/admin/pending-blueprints`)
+      const res = await fetch(`${XANO}/admin/pending-blueprints`, {
+        headers: getAuthHeaders(),
+      })
       const data = await res.json()
       if (data.success) setItems(data.items || [])
     } finally {
@@ -51,14 +53,14 @@ export default function AdminBlueprintsPage() {
     try {
       const res = await fetch(`${XANO}/blueprints/approve`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ blueprint_id: id }),
       })
       const data = await res.json()
       if (data.success) {
         showToast(`Approved and sent to customer.`)
         setActiveId(null)
-        setItems((prev) => prev.filter((i) => i.blueprint_id !== id))
+        setItems((prev) => prev.filter((i) => i.id !== id))
       } else {
         showToast("Approval failed. Try again.")
       }
@@ -72,15 +74,14 @@ export default function AdminBlueprintsPage() {
     try {
       const res = await fetch(`${XANO}/blueprints/reject`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ blueprint_id: id }),
       })
       const data = await res.json()
       if (data.success) {
-        showToast("Rejected. New Blueprint is generating…")
+        showToast("Rejected. New Blueprint ready — refresh to review.")
         setActiveId(null)
-        setItems((prev) => prev.filter((i) => i.blueprint_id !== id))
-        setTimeout(load, 8000)
+        load()
       } else {
         showToast("Rejection failed. Try again.")
       }
@@ -89,7 +90,7 @@ export default function AdminBlueprintsPage() {
     }
   }
 
-  const active = items.find((i) => i.blueprint_id === activeId)
+  const active = items.find((i) => i.id === activeId)
 
   return (
     <div style={{ background: "#F7F4EF", minHeight: "100vh" }}>
@@ -146,11 +147,11 @@ export default function AdminBlueprintsPage() {
             <div style={{ width: 280, flexShrink: 0 }}>
               {items.map((item) => (
                 <div
-                  key={item.blueprint_id}
-                  onClick={() => setActiveId(item.blueprint_id)}
+                  key={item.id}
+                  onClick={() => setActiveId(item.id)}
                   style={{
-                    background: activeId === item.blueprint_id ? "#fff" : "#FDFBF8",
-                    border: `1px solid ${activeId === item.blueprint_id ? "#7A1E2C" : "#E6E1D9"}`,
+                    background: activeId === item.id ? "#fff" : "#FDFBF8",
+                    border: `1px solid ${activeId === item.id ? "#7A1E2C" : "#E6E1D9"}`,
                     borderRadius: 10,
                     padding: "16px 18px",
                     marginBottom: 10,
@@ -208,8 +209,8 @@ export default function AdminBlueprintsPage() {
                 {/* Actions */}
                 <div style={{ display: "flex", gap: 12 }}>
                   <button
-                    onClick={() => handleApprove(active.blueprint_id)}
-                    disabled={actionLoading === active.blueprint_id}
+                    onClick={() => handleApprove(active.id)}
+                    disabled={actionLoading === active.id}
                     style={{
                       flex: 1, padding: "14px 0",
                       background: "#7A1E2C", color: "#fff",
@@ -217,11 +218,11 @@ export default function AdminBlueprintsPage() {
                       fontSize: 15, fontWeight: 600, cursor: "pointer",
                     }}
                   >
-                    {actionLoading === active.blueprint_id ? "Processing…" : "Approve & Send to Customer"}
+                    {actionLoading === active.id ? "Processing…" : "Approve & Send to Customer"}
                   </button>
                   <button
-                    onClick={() => handleReject(active.blueprint_id)}
-                    disabled={actionLoading === active.blueprint_id}
+                    onClick={() => handleReject(active.id)}
+                    disabled={actionLoading === active.id}
                     style={{
                       padding: "14px 20px",
                       background: "#fff", color: "#4A5568",

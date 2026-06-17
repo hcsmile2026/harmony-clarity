@@ -27,6 +27,7 @@ export default function OrderPage() {
     if (!form.first_name.trim()) return setError("First name is required.")
     if (!form.email.trim()) return setError("Email is required.")
     if (!form.career_question.trim()) return setError("Please describe your career question.")
+    if (!form.date_of_birth.trim()) return setError("Your date of birth is required to generate your Blueprint.")
 
     setIsLoading(true)
     try {
@@ -126,13 +127,17 @@ export default function OrderPage() {
 
               {/* Date of Birth */}
               <div style={{ marginBottom: 16 }}>
-                <label style={labelStyle}>Date of Birth</label>
+                <label style={labelStyle}>Date of Birth *</label>
                 <input
                   type="date"
                   value={form.date_of_birth}
                   onChange={set("date_of_birth")}
                   style={inputStyle}
+                  required
                 />
+                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#4A5568", lineHeight: 1.5 }}>
+                  Your Blueprint is calculated from your real birth data — please enter your actual date of birth. An incorrect date will produce inaccurate results.
+                </p>
               </div>
 
               {/* Time of Birth */}
@@ -159,6 +164,9 @@ export default function OrderPage() {
                   placeholder="e.g. Newport Beach, CA, USA"
                   style={inputStyle}
                 />
+                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#4A5568", lineHeight: 1.5 }}>
+                  Include your city and country if you know it. If not, leave it blank — your Blueprint will still be personalised using your date of birth.
+                </p>
               </div>
             </div>
 

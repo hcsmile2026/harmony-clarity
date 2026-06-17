@@ -57,11 +57,11 @@ export default function OrderPage() {
             marginBottom: 12,
             lineHeight: 1.3,
           }}>
-            Get Your Career Clarity Blueprint
+            Get Your Career Clarity Blueprint™
           </h1>
           <p style={{ color: "#4A5568", fontSize: 16, lineHeight: 1.6 }}>
-            Answer a few questions and receive a personalised AI-powered Blueprint
-            for your career decision — delivered to your inbox within 24 hours.
+            Answer a few questions and receive a personalised Blueprint calculated from your birth data
+            for your career decision — delivered to your inbox within 1–2 business days.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ export default function OrderPage() {
             </PrimaryButton>
 
             <p style={{ color: "#4A5568", fontSize: 12, textAlign: "center", margin: 0 }}>
-              Secure payment via Stripe. Your Blueprint arrives within 24 hours.
+              Secure payment via Stripe. Your Career Clarity Blueprint™ arrives within 1–2 business days.
             </p>
           </div>
         </form>

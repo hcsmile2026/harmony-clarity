@@ -22,8 +22,8 @@ export default function OrderThankYouPage() {
           lineHeight: 1.7,
           marginBottom: 12,
         }}>
-          Your Career Clarity Blueprint will be delivered to your inbox
-          within <strong style={{ color: "#1F2933" }}>24 hours</strong>.
+          Your Career Clarity Blueprint™ will be delivered to your inbox
+          within <strong style={{ color: "#1F2933" }}>1–2 business days</strong>.
         </p>
 
         <p style={{ fontSize: 15, color: "#4A5568", lineHeight: 1.6, marginBottom: 32 }}>
@@ -42,7 +42,7 @@ export default function OrderThankYouPage() {
         }}>
           <p style={{ color: "#4A5568", fontSize: 14, lineHeight: 1.7, margin: 0 }}>
             <strong style={{ color: "#1F2933" }}>What happens next:</strong><br />
-            We review your Blueprint personally before sending it to you.
+            We review your Career Clarity Blueprint™ personally before sending it to you.
             You will receive an email with a secure link to view your personalised report.
           </p>
         </div>

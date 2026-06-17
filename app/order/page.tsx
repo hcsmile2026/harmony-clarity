@@ -5,6 +5,14 @@ import { PrimaryButton, InlineError } from "@/components/hcb"
 
 const XANO = "https://xkyb-0esl-ybtr.n7e.xano.io/api:lsRTcA3V"
 
+const INCLUDES = [
+  "Your natural strengths and how they apply to this decision",
+  "How you're designed to make important decisions",
+  "Career environments where you're most likely to thrive",
+  "Personalized insight into your current career question",
+  "Practical next steps to move forward with clarity",
+]
+
 export default function OrderPage() {
   const [form, setForm] = useState({
     first_name: "",
@@ -47,23 +55,56 @@ export default function OrderPage() {
 
   return (
     <div style={{ background: "#F7F4EF", minHeight: "100vh" }}>
-      <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 24px" }}>
+      <div style={{ maxWidth: 620, margin: "0 auto", padding: "56px 24px 80px" }}>
+
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <div style={{ color: "#7A1E2C", fontSize: 22, marginBottom: 12 }}>✦</div>
+          <div style={{ color: "#7A1E2C", fontSize: 22, marginBottom: 16 }}>✦</div>
           <h1 style={{
             fontFamily: "Libre Baskerville, serif",
-            fontSize: 28,
+            fontSize: 30,
             color: "#1F2933",
-            marginBottom: 12,
+            marginBottom: 20,
             lineHeight: 1.3,
           }}>
             Get Your Career Clarity Blueprint™
           </h1>
-          <p style={{ color: "#4A5568", fontSize: 16, lineHeight: 1.6 }}>
-            Answer a few questions and receive a personalised Blueprint calculated from your birth data
-            for your career decision — delivered to your inbox within 1–2 business days.
+          <p style={{ color: "#4A5568", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
+            Get personalized insight into your career decision based on your natural strengths, decision-making style, and birth data — so you can see which path actually fits how you're built.
           </p>
+          <p style={{ color: "#4A5568", fontSize: 16, lineHeight: 1.7, marginBottom: 16 }}>
+            Whether you're considering a new job, starting a business, or changing direction entirely, your Career Clarity Blueprint™ helps you see your decision more clearly and understand which direction fits how you're naturally built.
+          </p>
+          <p style={{ color: "#7A1E2C", fontSize: 14, fontWeight: 600 }}>
+            Delivered to your inbox within 1–2 business days.
+          </p>
+        </div>
+
+        {/* Includes */}
+        <div style={{
+          background: "#fff",
+          border: "1px solid #E6E1D9",
+          borderRadius: 12,
+          padding: "28px 32px",
+          marginBottom: 32,
+        }}>
+          <p style={{
+            fontFamily: "Libre Baskerville, serif",
+            fontSize: 15,
+            fontWeight: 700,
+            color: "#1F2933",
+            marginBottom: 16,
+          }}>
+            Your Blueprint includes
+          </p>
+          <ul style={{ display: "flex", flexDirection: "column", gap: 12, margin: 0, padding: 0, listStyle: "none" }}>
+            {INCLUDES.map((item) => (
+              <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <span style={{ color: "#7A1E2C", fontSize: 14, marginTop: 2, flexShrink: 0 }}>✦</span>
+                <span style={{ color: "#1F2933", fontSize: 15, lineHeight: 1.6 }}>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Form */}
@@ -75,9 +116,10 @@ export default function OrderPage() {
             padding: 32,
             display: "flex",
             flexDirection: "column",
-            gap: 20,
+            gap: 24,
           }}>
-            {/* Name */}
+
+            {/* First Name */}
             <div>
               <label style={labelStyle}>First Name *</label>
               <input
@@ -101,32 +143,39 @@ export default function OrderPage() {
                 style={inputStyle}
                 required
               />
+              <p style={helperStyle}>Your Blueprint will be delivered to this address.</p>
             </div>
 
             {/* Career Question */}
             <div>
-              <label style={labelStyle}>Your Career Question *</label>
-              <p style={{ color: "#4A5568", fontSize: 13, marginBottom: 8 }}>
-                Describe your career situation or the decision you are facing.
-              </p>
+              <label style={labelStyle}>What career decision are you trying to make? *</label>
               <textarea
                 value={form.career_question}
                 onChange={set("career_question")}
-                placeholder="e.g. Should I leave my corporate job to start my own consulting business?"
+                placeholder="Tell us what's weighing on your mind right now."
                 rows={4}
                 style={{ ...inputStyle, resize: "vertical", height: "auto" }}
                 required
               />
+              <div style={{ ...helperStyle, marginTop: 8 }}>
+                <span style={{ display: "block", marginBottom: 4 }}>Examples:</span>
+                <ul style={{ margin: 0, padding: "0 0 0 16px", display: "flex", flexDirection: "column", gap: 2 }}>
+                  <li>Should I stay in my current job or move on?</li>
+                  <li>Is it time to start my own business?</li>
+                  <li>Which career path fits me best?</li>
+                  <li>Why do I keep feeling pulled in different directions?</li>
+                </ul>
+              </div>
             </div>
 
-            {/* Divider */}
-            <div style={{ borderTop: "1px solid #E6E1D9", paddingTop: 20 }}>
-              <p style={{ color: "#4A5568", fontSize: 13, marginBottom: 16 }}>
-                Add your birth details below. Your date of birth is required — time and location improve accuracy if you have them.
+            {/* Birth Details Divider */}
+            <div style={{ borderTop: "1px solid #E6E1D9", paddingTop: 24 }}>
+              <p style={{ color: "#1F2933", fontSize: 14, fontWeight: 600, marginBottom: 20 }}>
+                Add your birth details for a more precise Blueprint.
               </p>
 
               {/* Date of Birth */}
-              <div style={{ marginBottom: 16 }}>
+              <div style={{ marginBottom: 20 }}>
                 <label style={labelStyle}>Date of Birth *</label>
                 <input
                   type="date"
@@ -135,13 +184,13 @@ export default function OrderPage() {
                   style={inputStyle}
                   required
                 />
-                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#4A5568", lineHeight: 1.5 }}>
-                  Your Blueprint is calculated from your real birth data — please enter your actual date of birth. An incorrect date will produce inaccurate results.
+                <p style={helperStyle}>
+                  Your Blueprint is based on your birth data. Please enter your actual date of birth for the most accurate results.
                 </p>
               </div>
 
               {/* Time of Birth */}
-              <div style={{ marginBottom: 16 }}>
+              <div style={{ marginBottom: 20 }}>
                 <label style={labelStyle}>Time of Birth</label>
                 <input
                   type="time"
@@ -149,8 +198,8 @@ export default function OrderPage() {
                   onChange={set("time_of_birth")}
                   style={inputStyle}
                 />
-                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#4A5568", lineHeight: 1.5 }}>
-                  For greater accuracy, include your time of birth if you know it. If not, leave it blank — your Blueprint will still be personalised using your date of birth and location.
+                <p style={helperStyle}>
+                  For greater accuracy, include your time of birth if you know it. If not, leave it blank — your Blueprint will still be personalized using your date of birth and location.
                 </p>
               </div>
 
@@ -161,11 +210,11 @@ export default function OrderPage() {
                   type="text"
                   value={form.location_of_birth}
                   onChange={set("location_of_birth")}
-                  placeholder="e.g. Newport Beach, CA, USA"
+                  placeholder="e.g. Phnom Penh, Cambodia"
                   style={inputStyle}
                 />
-                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#4A5568", lineHeight: 1.5 }}>
-                  Include your city and country if you know it. If not, leave it blank — your Blueprint will still be personalised using your date of birth.
+                <p style={helperStyle}>
+                  Include your city and country if you know it. If not, leave it blank — your Blueprint will still be personalized using your date of birth.
                 </p>
               </div>
             </div>
@@ -176,11 +225,22 @@ export default function OrderPage() {
               {isLoading ? "Redirecting to payment…" : "Get My Blueprint — $47"}
             </PrimaryButton>
 
-            <p style={{ color: "#4A5568", fontSize: 12, textAlign: "center", margin: 0 }}>
-              Secure payment via Stripe. Your Career Clarity Blueprint™ arrives within 1–2 business days.
-            </p>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ color: "#4A5568", fontSize: 13, margin: "0 0 4px" }}>
+                Secure payment via Stripe.
+              </p>
+              <p style={{ color: "#4A5568", fontSize: 13, margin: 0 }}>
+                Your Career Clarity Blueprint™ arrives within 1–2 business days.
+              </p>
+            </div>
           </div>
         </form>
+
+        {/* Footer note */}
+        <p style={{ textAlign: "center", color: "#4A5568", fontSize: 13, marginTop: 20 }}>
+          Each Blueprint is reviewed before delivery.
+        </p>
+
       </div>
     </div>
   )
@@ -204,4 +264,11 @@ const inputStyle: React.CSSProperties = {
   background: "#F7F4EF",
   boxSizing: "border-box",
   outline: "none",
+}
+
+const helperStyle: React.CSSProperties = {
+  margin: "6px 0 0",
+  fontSize: 12,
+  color: "#4A5568",
+  lineHeight: 1.6,
 }

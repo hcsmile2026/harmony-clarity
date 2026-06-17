@@ -152,7 +152,7 @@ export default function BlueprintViewPage() {
         {/* Footer */}
         <div style={{ textAlign: "center", marginTop: 40 }}>
           <p style={{ color: "#4A5568", fontSize: 13 }}>
-            Harmony Clarity Blueprint™ — For reflective purposes only.
+            Career Clarity Blueprint™ — For reflective purposes only.
           </p>
           <p style={{ color: "#4A5568", fontSize: 13 }}>
             Questions?{" "}

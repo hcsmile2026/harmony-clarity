@@ -31,7 +31,7 @@ export default function PrivacyPage() {
         <section className="flex flex-col gap-2">
           <h2 className="font-serif text-lg font-medium">1. What We Collect</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
-            When you use Harmony Clarity Blueprint, we collect the following information:
+            When you use Career Clarity Blueprint™, we collect the following information:
           </p>
           <ul className="list-disc pl-5 flex flex-col gap-1" style={{ color: "var(--hcb-text-secondary)" }}>
             <li><strong>Account information:</strong> email address and password</li>

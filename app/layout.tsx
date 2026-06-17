@@ -17,7 +17,7 @@ const libreBaskerville = Libre_Baskerville({
 })
 
 export const metadata: Metadata = {
-  title: 'Harmony Clarity Blueprint',
+  title: 'Career Clarity Blueprint™',
   description: 'Clarity for your most important decisions. A premium decision reflection platform calculated from your birth data.',
   icons: {
     icon: [

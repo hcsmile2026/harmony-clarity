@@ -31,7 +31,7 @@ export default function TermsPage() {
         <section className="flex flex-col gap-2">
           <h2 className="font-serif text-lg font-medium">1. About This Service</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
-            Harmony Clarity Blueprint ("we", "us", "our") provides a decision reflection
+            Career Clarity Blueprint™ ("we", "us", "our") provides a decision reflection
             platform. Our Blueprints are generated for <strong>reflective and entertainment purposes
             only</strong>. They do not constitute professional advice of any kind — including but not
             limited to financial, legal, medical, or psychological advice.
@@ -86,7 +86,7 @@ export default function TermsPage() {
         <section className="flex flex-col gap-2">
           <h2 className="font-serif text-lg font-medium">7. Limitation of Liability</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
-            To the maximum extent permitted by law, Harmony Clarity Blueprint shall not be liable
+            To the maximum extent permitted by law, Career Clarity Blueprint™ shall not be liable
             for any indirect, incidental, or consequential damages arising from your use of this
             service. Our total liability shall not exceed the amount you paid for the relevant credit.
           </p>

@@ -124,7 +124,7 @@ export default function AuthPage() {
           className="font-serif text-[32px] text-center mb-2"
           style={{ color: "var(--hcb-text-primary)" }}
         >
-          Harmony Clarity Blueprint
+          Career Clarity Blueprint™
         </h1>
         <p
           className="text-base mb-8"

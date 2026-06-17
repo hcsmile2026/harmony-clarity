@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Harmony Clarity Blueprint Design Tokens */
+  /* Career Clarity Blueprint™ Design Tokens */
   --hcb-bg: #F7F4EF;
   --hcb-card-bg: #FFFFFF;
   --hcb-text-primary: #1F2933;

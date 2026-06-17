@@ -31,7 +31,7 @@ export default function TermsPage() {
         <section className="flex flex-col gap-2">
           <h2 className="font-serif text-lg font-medium">1. About This Service</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
-            Harmony Clarity Blueprint ("we", "us", "our") provides an AI-powered decision reflection
+            Harmony Clarity Blueprint ("we", "us", "our") provides a decision reflection
             platform. Our Blueprints are generated for <strong>reflective and entertainment purposes
             only</strong>. They do not constitute professional advice of any kind — including but not
             limited to financial, legal, medical, or psychological advice.

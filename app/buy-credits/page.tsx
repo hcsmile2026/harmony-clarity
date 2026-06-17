@@ -11,7 +11,7 @@ import {
 import { getAuthHeaders } from "@/hooks/use-auth-check"
 
 const features = [
-  "Full AI-powered decision reflection",
+  "Full decision reflection calculated from your birth data",
   "Birth Blueprint Analysis",
   "Your Next 14 Days action plan",
   "Reflection Question",

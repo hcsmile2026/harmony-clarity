@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { AppShell, ClarityCard, PrimaryButton, SecondaryButton } from "@/components/hcb"
 
 const FEATURES = [
-  "Full AI-powered decision reflection",
+  "Full decision reflection calculated from your birth data",
   "Birth Blueprint Analysis",
   "Your Next 14 Days action plan",
   "Reflection Question",

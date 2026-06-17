@@ -122,7 +122,7 @@ export default function OrderPage() {
             {/* Divider */}
             <div style={{ borderTop: "1px solid #E6E1D9", paddingTop: 20 }}>
               <p style={{ color: "#4A5568", fontSize: 13, marginBottom: 16 }}>
-                <strong style={{ color: "#1F2933" }}>Optional:</strong> Add your birth details for deeper personalisation.
+                Add your birth details below. Your date of birth is required — time and location improve accuracy if you have them.
               </p>
 
               {/* Date of Birth */}

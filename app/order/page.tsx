@@ -210,7 +210,7 @@ export default function OrderPage() {
                   type="text"
                   value={form.location_of_birth}
                   onChange={set("location_of_birth")}
-                  placeholder="e.g. Phnom Penh, Cambodia"
+                  placeholder="e.g. Newport Beach, CA, USA"
                   style={inputStyle}
                 />
                 <p style={helperStyle}>

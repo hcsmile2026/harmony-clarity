@@ -152,7 +152,7 @@ export default function OrderPage() {
               <textarea
                 value={form.career_question}
                 onChange={set("career_question")}
-                placeholder="Tell us what's weighing on your mind right now."
+                placeholder={'Describe the exact career decision you\'re facing. Include both options if possible. For example: "Should I leave my corporate job to start consulting independently, or stay and pursue a promotion?" The more specific you are, the more personalized your Blueprint will be.'}
                 rows={4}
                 style={{ ...inputStyle, resize: "vertical", height: "auto" }}
                 required

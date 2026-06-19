@@ -21,6 +21,7 @@ export default function OrderPage() {
     time_of_birth: "",
     location_of_birth: "",
     career_question: "",
+    decision_difficulty: "",
   })
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -34,7 +35,6 @@ export default function OrderPage() {
 
     if (!form.first_name.trim()) return setError("First name is required.")
     if (!form.email.trim()) return setError("Email is required.")
-    if (!form.career_question.trim()) return setError("Please describe your career question.")
     if (!form.date_of_birth.trim()) return setError("Your date of birth is required to generate your Blueprint.")
 
     setIsLoading(true)
@@ -42,7 +42,15 @@ export default function OrderPage() {
       const res = await fetch(`${XANO}/orders/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          first_name: form.first_name,
+          email: form.email,
+          date_of_birth: form.date_of_birth,
+          time_of_birth: form.time_of_birth,
+          location_of_birth: form.location_of_birth,
+          career_question: form.career_question,
+          decision_difficulty: form.decision_difficulty,
+        }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.message || "Something went wrong.")
@@ -146,26 +154,43 @@ export default function OrderPage() {
               <p style={helperStyle}>Your Blueprint will be delivered to this address.</p>
             </div>
 
-            {/* Career Question */}
+            {/* Field 1 — The Decision */}
             <div>
-              <label style={labelStyle}>What career decision are you trying to make? *</label>
+              <label style={labelStyle}>What career decision are you facing? *</label>
               <textarea
                 value={form.career_question}
                 onChange={set("career_question")}
-                placeholder={'Describe the exact career decision you\'re facing. Include both options if possible. For example: "Should I leave my corporate job to start consulting independently, or stay and pursue a promotion?" The more specific you are, the more personalized your Blueprint will be.'}
-                rows={4}
+                placeholder={'Describe the exact career decision you\'re facing. Name both options if you can. For example: "Should I leave my 15-year corporate career to consult independently, or stay and go for the director role I\'ve been offered?"'}
+                rows={5}
                 style={{ ...inputStyle, resize: "vertical", height: "auto" }}
-                required
               />
-              <div style={{ ...helperStyle, marginTop: 8 }}>
-                <span style={{ display: "block", marginBottom: 4 }}>Examples:</span>
-                <ul style={{ margin: 0, padding: "0 0 0 16px", display: "flex", flexDirection: "column", gap: 2 }}>
-                  <li>Should I stay in my current job or move on?</li>
-                  <li>Is it time to start my own business?</li>
-                  <li>Which career path fits me best?</li>
-                  <li>Why do I keep feeling pulled in different directions?</li>
-                </ul>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginTop: 6, gap: 12 }}>
+                <p style={{ ...helperStyle, margin: 0, flex: 1 }}>
+                  <span style={{ color: "#C0392B" }}>✗ Too vague:</span> &ldquo;What am I best at?&rdquo;&nbsp;&nbsp;
+                  <span style={{ color: "#2E7D32" }}>✓ Specific:</span> &ldquo;Should I leave my corporate job to coach full-time, or stay and ask for a promotion?&rdquo; The more specific you are, the more personal your Blueprint will be.
+                </p>
+                <span style={{
+                  fontSize: 12,
+                  color: form.career_question.length >= 120 ? "#2E7D32" : "#9AA5B4",
+                  flexShrink: 0,
+                  fontVariantNumeric: "tabular-nums",
+                  whiteSpace: "nowrap",
+                }}>
+                  {form.career_question.length} / 120
+                </span>
               </div>
+            </div>
+
+            {/* Field 2 — What's Making It Hard */}
+            <div>
+              <label style={labelStyle}>What&apos;s making this decision difficult to settle?</label>
+              <textarea
+                value={form.decision_difficulty}
+                onChange={set("decision_difficulty")}
+                placeholder={"One or two sentences is enough. For example: \"I've been in this role for 10 years and it pays well, but I dread Monday mornings.\""}
+                rows={3}
+                style={{ ...inputStyle, resize: "vertical", height: "auto" }}
+              />
             </div>
 
             {/* Birth Details Divider */}
@@ -221,7 +246,7 @@ export default function OrderPage() {
 
             {error && <InlineError message={error} />}
 
-            <PrimaryButton type="submit" disabled={isLoading}>
+            <PrimaryButton type="submit" disabled={isLoading || form.career_question.length < 120}>
               {isLoading ? "Redirecting to payment…" : "Get My Blueprint — $47"}
             </PrimaryButton>
 

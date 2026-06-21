@@ -20,7 +20,7 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="text-sm" style={{ color: "var(--hcb-text-secondary)" }}>
-          Effective Date: June 19, 2026 &nbsp;·&nbsp; Last Updated: June 19, 2026
+          Last Updated: June 19, 2026
         </p>
       </div>
 
@@ -278,12 +278,7 @@ export default function TermsPage() {
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             Harmony Clarity™
             <br />
-            <a
-              href="mailto:hello@harmonyclarity.com"
-              style={{ color: "var(--hcb-action-primary)" }}
-            >
-              hello@harmonyclarity.com
-            </a>
+            hello@harmonyclarity.com
           </p>
         </section>
       </div>

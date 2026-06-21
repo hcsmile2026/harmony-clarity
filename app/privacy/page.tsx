@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm" style={{ color: "var(--hcb-text-secondary)" }}>
-          Last Updated: June 19, 2026
+          Effective Date: June 19, 2026 &nbsp;·&nbsp; Last Updated: June 19, 2026
         </p>
       </div>
 
@@ -128,6 +128,10 @@ export default function PrivacyPage() {
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             We do not sell or rent your personal information.
           </p>
+          <p style={{ color: "var(--hcb-text-secondary)" }}>
+            Harmony Clarity does not sell personal information and has not sold personal information
+            in the preceding 12 months.
+          </p>
           <p style={{ color: "var(--hcb-text-secondary)" }}>We may share information only:</p>
           <ul className="list-disc pl-5 flex flex-col gap-1" style={{ color: "var(--hcb-text-secondary)" }}>
             <li>With service providers acting on our behalf</li>
@@ -227,7 +231,19 @@ export default function PrivacyPage() {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h2 className="font-serif text-lg font-medium">11. Changes to This Privacy Policy</h2>
+          <h2 className="font-serif text-lg font-medium">11. California Privacy Rights</h2>
+          <p style={{ color: "var(--hcb-text-secondary)" }}>
+            California residents may have additional rights regarding their personal information
+            under applicable California privacy laws.
+          </p>
+          <p style={{ color: "var(--hcb-text-secondary)" }}>
+            Requests regarding access, correction, or deletion of personal information may be
+            submitted using the contact information provided below.
+          </p>
+        </section>
+
+        <section className="flex flex-col gap-2">
+          <h2 className="font-serif text-lg font-medium">12. Changes to This Privacy Policy</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             We may update this Privacy Policy from time to time.
           </p>
@@ -241,7 +257,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h2 className="font-serif text-lg font-medium">12. Contact Us</h2>
+          <h2 className="font-serif text-lg font-medium">13. Contact Us</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             If you have questions regarding this Privacy Policy or wish to make a privacy-related
             request, please contact:

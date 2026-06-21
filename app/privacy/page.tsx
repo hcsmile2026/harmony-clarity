@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm" style={{ color: "var(--hcb-text-secondary)" }}>
-          Last Updated: June 20, 2026
+          Last Updated: June 19, 2026
         </p>
       </div>
 

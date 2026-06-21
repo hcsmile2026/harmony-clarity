@@ -20,7 +20,7 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="text-sm" style={{ color: "var(--hcb-text-secondary)" }}>
-          Last Updated: June 19, 2026
+          Effective Date: June 19, 2026 &nbsp;·&nbsp; Last Updated: June 19, 2026
         </p>
       </div>
 
@@ -223,8 +223,8 @@ export default function TermsPage() {
           <h2 className="font-serif text-lg font-medium">13. Third-Party Services</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             Our Services may rely on or integrate with third-party providers, including payment
-            processors, hosting providers, analytics services, automation providers, and artificial
-            intelligence providers.
+            processors, hosting providers, analytics services, automation providers, artificial
+            intelligence providers, and other technology providers.
           </p>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             We are not responsible for the availability, policies, or actions of third-party services.
@@ -248,7 +248,16 @@ export default function TermsPage() {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h2 className="font-serif text-lg font-medium">16. Changes to These Terms</h2>
+          <h2 className="font-serif text-lg font-medium">16. Entire Agreement</h2>
+          <p style={{ color: "var(--hcb-text-secondary)" }}>
+            These Terms constitute the entire agreement between you and Harmony Clarity regarding
+            your use of the Services and supersede any prior agreements, communications, or
+            understandings relating to the Services.
+          </p>
+        </section>
+
+        <section className="flex flex-col gap-2">
+          <h2 className="font-serif text-lg font-medium">17. Changes to These Terms</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             We may update these Terms from time to time.
           </p>
@@ -262,7 +271,7 @@ export default function TermsPage() {
         </section>
 
         <section className="flex flex-col gap-2">
-          <h2 className="font-serif text-lg font-medium">17. Contact Us</h2>
+          <h2 className="font-serif text-lg font-medium">18. Contact Us</h2>
           <p style={{ color: "var(--hcb-text-secondary)" }}>
             If you have questions regarding these Terms, please contact:
           </p>

@@ -11,7 +11,7 @@ June 5, 2026
 - **Backend**: Xano (https://xkyb-0esl-ybtr.n7e.xano.io)
 - **Payments**: Stripe via Xano (API group: lsRTcA3V)
 - **Hosting**: Vercel → app.harmonyclarity.com
-- **Marketing/CRM**: GoHighLevel → harmonyclarity.com
+- **Marketing/CRM**: GoHighLevel → harmonyclarity.com (home page is the lead magnet; /decide still exists as a separate URL)
 - **Analytics**: Vercel Analytics (already wired in layout.tsx)
 
 ## User Flow

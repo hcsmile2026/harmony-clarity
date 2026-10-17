@@ -46,15 +46,13 @@ export default function PaymentSuccessPage() {
           className="font-serif text-[28px] md:text-[32px] mb-3"
           style={{ color: "var(--hcb-text-primary)" }}
         >
-          Payment Successful
+          Order Submitted
         </h1>
         <p
           className="text-base mb-8"
           style={{ color: "var(--hcb-text-secondary)" }}
         >
-          {isAuthenticated
-            ? "Your Blueprint credit has been added to your account."
-            : "Your payment was received. Create an account or log in to access your Blueprint credit."}
+          {"Your payment and credit status have not yet been verified. Please email Lnkmi95@protonmail.com for assistance. Do not submit another payment until your status is confirmed."}
         </p>
 
         <ClarityCard className="w-full mb-8 text-left">
@@ -62,7 +60,7 @@ export default function PaymentSuccessPage() {
             className="text-sm font-medium mb-3"
             style={{ color: "var(--hcb-text-secondary)" }}
           >
-            What you unlocked
+            What's included
           </p>
           <ul className="flex flex-col gap-3">
             {FEATURES.map((feature) => (
@@ -93,7 +91,7 @@ export default function PaymentSuccessPage() {
               Create Account or Log In &rarr;
             </PrimaryButton>
             <p className="text-sm" style={{ color: "var(--hcb-text-secondary)" }}>
-              Your credit will be waiting when you sign in.
+              Do not submit another payment until your order is confirmed.
             </p>
           </div>
         )}
